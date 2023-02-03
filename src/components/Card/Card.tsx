@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Teams, UserData } from 'types/types';
 import { CardContainer } from './Card.styled';
 
-interface Props {
+interface CardProps {
     id?: string;
     url?: string;
     columns: Array<{
@@ -14,13 +14,14 @@ interface Props {
     navigationProps?: UserData | Teams;
 }
 
-const Card = ({
-    id,
-    columns,
-    url,
-    hasNavigation = true,
-    navigationProps = null,
-}: Props): JSX.Element => {
+const Card = (props: CardProps): JSX.Element => {
+    const {
+        id,
+        columns,
+        url,
+        hasNavigation = true,
+        navigationProps = null,
+    } = props;
     const navigate = useNavigate();
 
     return (

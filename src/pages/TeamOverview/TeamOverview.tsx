@@ -59,7 +59,7 @@ interface PageState {
     teamMembers?: UserData[];
 }
 
-const TeamOverview = () => {
+const TeamOverview = (): JSX.Element => {
     const location = useLocation();
     const {teamId} = useParams();
     const [pageData, setPageData] = React.useState<PageState>({});

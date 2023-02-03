@@ -4,15 +4,17 @@ import Card from '../Card/Card';
 import { Spinner } from '../Spinner/Spinner';
 import { ListContainer } from './List.styled';
 
-interface Props {
+interface ListProps {
     items?: ListItem[];
     hasNavigation?: boolean;
     isLoading: string;
 }
 
-const List = ({items, hasNavigation = true, isLoading}: Props) => {
+const List = (props: ListProps): JSX.Element => {
+    const { items, hasNavigation = true, isLoading } = props;
+
     return (
-        <ListContainer >
+        <ListContainer>
             {isLoading && <Spinner />}
             {!isLoading &&
                 items.map(({url, id, columns, navigationProps}, index) => {
@@ -27,7 +29,7 @@ const List = ({items, hasNavigation = true, isLoading}: Props) => {
                         />
                     );
                 })}
-        </ListContainer >
+        </ListContainer>
     );
 };
 

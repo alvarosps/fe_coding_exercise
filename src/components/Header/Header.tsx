@@ -7,12 +7,14 @@ import {
     HeaderTitle
 } from './Header.styled';
 
-interface Props {
+interface HeaderProps {
     title: string;
     showBackButton?: boolean;
 }
 
-const Header = ({title, showBackButton = true}: Props) => {
+const Header = (props: HeaderProps): JSX.Element => {
+    const { title, showBackButton = true } = props;
+
     const navigate = useNavigate();
     return (
         <HeaderContainer>

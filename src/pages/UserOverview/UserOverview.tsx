@@ -23,7 +23,7 @@ var mapU = (user: UserData) => {
     return <Card columns={columns} hasNavigation={false} navigationProps={user} />;
 };
 
-const UserOverview = () => {
+const UserOverview = (): JSX.Element => {
     const location = useLocation();
     return (
         <GlobalContainer>
