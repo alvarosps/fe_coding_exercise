@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {useLocation} from 'react-router-dom';
-import {UserData} from 'types/types';
+import { useLocation } from 'react-router-dom';
+import { UserData } from 'types/types';
 import Card from '../components/Card/Card';
-import {Container} from '../components/global.styled';
+import { GlobalContainer } from '../components/global.styled';
 import Header from '../components/Header/Header';
 
 var mapU = (user: UserData) => {
@@ -26,12 +26,12 @@ var mapU = (user: UserData) => {
 const UserOverview = () => {
     const location = useLocation();
     return (
-        <Container>
+        <GlobalContainer>
             <Header
                 title={`User ${location.state.firstName} ${location.state.lastName}`}
             />
             {mapU(location.state)}
-        </Container>
+        </GlobalContainer>
     );
 };
 

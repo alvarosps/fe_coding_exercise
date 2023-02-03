@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {ListItem, Teams as TeamsList} from 'types/types';
-import {getTeams as fetchTeams} from '../api/api';
+import { ListItem, Teams as TeamsList } from 'types/types';
+import { getTeams as fetchTeams } from '../api/api';
 import Header from '../components/Header/Header';
 import List from '../components/List/List';
-import {Container} from '../components/global.styled';
+import { GlobalContainer } from '../components/global.styled';
 
 var MapT = (teams: TeamsList[]) => {
     return teams.map(team => {
@@ -36,10 +36,10 @@ const Teams = () => {
     }, []);
 
     return (
-        <Container>
+        <GlobalContainer>
             <Header title="Teams" showBackButton={false} />
             <List items={MapT(teams)} isLoading={isLoading} />
-        </Container>
+        </GlobalContainer>
     );
 };
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {useNavigate} from 'react-router-dom';
-import {Teams, UserData} from 'types/types';
-import {Container} from './Card.styled';
+import { useNavigate } from 'react-router-dom';
+import { Teams, UserData } from 'types/types';
+import { CardContainer } from './Card.styled';
 
 interface Props {
     id?: string;
@@ -24,7 +24,7 @@ const Card = ({
     const navigate = useNavigate();
 
     return (
-        <Container
+        <CardContainer
             data-testid={`cardContainer-${id}`}
             hasNavigation={hasNavigation}
             onClick={(e: Event) => {
@@ -41,7 +41,7 @@ const Card = ({
                     <strong>{columnKey}</strong>&nbsp;{value}
                 </p>
             ))}
-        </Container>
+        </CardContainer>
     );
 };
 

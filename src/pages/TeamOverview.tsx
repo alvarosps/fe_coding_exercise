@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {useLocation, useParams} from 'react-router-dom';
-import {ListItem, UserData} from 'types/types';
-import {getTeamOverview, getUserData} from '../api/api';
+import { useLocation, useParams } from 'react-router-dom';
+import { ListItem, UserData } from 'types/types';
+import { getTeamOverview, getUserData } from '../api/api';
 import Card from '../components/Card/Card';
-import {Container} from '../components/global.styled';
+import { GlobalContainer } from '../components/global.styled';
 import Header from '../components/Header/Header';
 import List from '../components/List/List';
 
@@ -85,11 +85,11 @@ const TeamOverview = () => {
     }, [teamId]);
 
     return (
-        <Container>
+        <GlobalContainer>
             <Header title={`Team ${location.state.name}`} />
             {!isLoading && mapTLead(pageData.teamLead)}
             <List items={mapArray(pageData?.teamMembers ?? [])} isLoading={isLoading} />
-        </Container>
+        </GlobalContainer>
     );
 };
 
