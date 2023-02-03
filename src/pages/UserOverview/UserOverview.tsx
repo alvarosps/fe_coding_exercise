@@ -1,19 +1,23 @@
 import * as React from 'react';
-import {useLocation} from 'react-router-dom';
+import {Path, useLocation} from 'react-router-dom';
 import {UserData} from 'types/types';
 import {getUserColumns} from 'utils/utils';
 import Card from '../../components/Card/Card';
 import {GlobalContainer} from '../../components/global.styled';
 import Header from '../../components/Header/Header';
 
-const getUserCard = (user: UserData) => {
+const getUserCard = (user: UserData): JSX.Element => {
     const columns = getUserColumns(user);
 
     return <Card id={user.id} columns={columns} hasNavigation={false} navigationProps={user} />;
 };
 
+interface Location extends Path {
+    state: UserData;
+}
+
 const UserOverview = (): JSX.Element => {
-    const location = useLocation();
+    const location: Location = useLocation();
 
     return (
         <GlobalContainer>

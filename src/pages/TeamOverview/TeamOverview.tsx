@@ -10,7 +10,7 @@ import List from '../../components/List/List';
 
 const getUsersCards = (users: UserData[]): ListItem[] => {
     return users.map((user) => {
-        var columns = getUserColumns(user);
+        const columns = getUserColumns(user);
         
         return {
             id: user.id,

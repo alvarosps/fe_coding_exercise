@@ -8,7 +8,7 @@ import {GlobalContainer} from '../../components/global.styled';
 const getTeamsList = (teams: TeamsList[]): ListItem[] => {
     return teams.map(team => {
         const {id, name} = team;
-        var columns = [
+        const columns = [
             {
                 key: 'Name',
                 value: name,
