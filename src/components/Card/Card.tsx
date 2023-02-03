@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useNavigate} from 'react-router-dom';
-import {Teams, UserData} from 'types';
-import {Container} from './styles';
+import {Teams, UserData} from 'types/types';
+import {Container} from './Card.styled';
 
 interface Props {
     id?: string;
