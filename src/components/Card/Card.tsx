@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ListItemColumn, Teams, UserData } from 'types/types';
-import { CardContainer } from './Card.styled';
+import {useNavigate} from 'react-router-dom';
+import {ListItemColumn, Teams, UserData} from 'types/types';
+import {CardContainer} from './Card.styled';
 
 interface CardProps {
     id: string;
@@ -27,10 +27,10 @@ const Card = (props: CardProps): JSX.Element => {
 
         if (hasNavigation) {
             navigate(url, {
-                state: navigationProps
+                state: navigationProps,
             });
         }
-    }
+    };
 
     return (
         <CardContainer
@@ -39,7 +39,7 @@ const Card = (props: CardProps): JSX.Element => {
             onClick={handleOnClick}
         >
             {
-                columns.map(({ key: columnKey, value }) => (
+                columns.map(({key: columnKey, value}) => (
                     <p key={columnKey}>
                         <strong>{columnKey}</strong>&nbsp;{value}
                     </p>

@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { ListItem, Teams as TeamsList } from 'types/types';
-import { getTeams as fetchTeams } from '../../api/api';
+import {ListItem, Teams as TeamsList} from 'types/types';
+import {getTeams as fetchTeams} from '../../api/api';
 import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
-import { GlobalContainer } from '../../components/global.styled';
+import {GlobalContainer} from '../../components/global.styled';
 
 const getTeamsList = (teams: TeamsList[]): ListItem[] => {
     return teams.map(team => {
-        const { id, name } = team;
+        const {id, name} = team;
         var columns = [
             {
                 key: 'Name',
@@ -15,7 +15,7 @@ const getTeamsList = (teams: TeamsList[]): ListItem[] => {
             },
         ];
         return {
-            id: id,
+            id,
             url: `/team/${id}`,
             columns,
             navigationProps: team,

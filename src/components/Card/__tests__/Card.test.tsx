@@ -12,7 +12,7 @@ jest.mock('react-router-dom', () => ({
 
 describe('Card', () => {
     it('should render card with single column', () => {
-        const id = "test-id";
+        const id = 'test-id';
         var columns = [{key: 'columnKey', value: 'columnValue'}];
         render(<Card id={id} columns={columns} />);
 
@@ -21,7 +21,7 @@ describe('Card', () => {
     });
 
     it('should render card with multiple columns', () => {
-        const id = "test-id";
+        const id = 'test-id';
         var columns = [
             {key: 'columnKey1', value: 'columnValue1'},
             {key: 'columnKey2', value: 'columnValue2'},
@@ -59,7 +59,7 @@ describe('Card', () => {
     });
 
     it('should not navigate when card is clicked and navigation is disabled', () => {
-        const id = "test-id";
+        const id = 'test-id';
 
         render(<Card id={id} columns={[{key: 'columnKey', value: 'columnValue'}]} hasNavigation={false} />);
 

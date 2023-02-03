@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-import { ListItem, UserData } from 'types/types';
-import { getTeamOverview, getUserData } from '../../api/api';
+import {useLocation, useParams} from 'react-router-dom';
+import {ListItem, UserData} from 'types/types';
+import {getUserColumns} from 'utils/utils';
+import {getTeamOverview, getUserData} from '../../api/api';
 import Card from '../../components/Card/Card';
-import { GlobalContainer } from '../../components/global.styled';
+import {GlobalContainer} from '../../components/global.styled';
 import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
-import { getUserColumns } from 'utils/utils';
 
 const getUsersCards = (users: UserData[]): ListItem[] => {
     return users.map((user) => {
@@ -22,7 +22,7 @@ const getUsersCards = (users: UserData[]): ListItem[] => {
 };
 
 const getTeamLeadCard = (teamLead: UserData): JSX.Element => {
-    const { id } = teamLead;
+    const {id} = teamLead;
 
     const columns = [
         {
@@ -38,21 +38,21 @@ const getTeamLeadCard = (teamLead: UserData): JSX.Element => {
 interface PageState {
     teamLead?: UserData;
     teamMembers?: UserData[];
-};
+}
 
 const TeamOverview = (): JSX.Element => {
     const location = useLocation();
-    const { teamId } = useParams();
+    const {teamId} = useParams();
     const [pageData, setPageData] = React.useState<PageState>({});
     const [isLoading, setIsLoading] = React.useState<boolean>(true);
 
     React.useEffect(() => {
         const getTeamUsers = async () => {
-            const { teamLeadId, teamMemberIds = [] } = await getTeamOverview(teamId);
+            const {teamLeadId, teamMemberIds = []} = await getTeamOverview(teamId);
             const teamLead = await getUserData(teamLeadId);
 
             const teamMembers = [];
-            for(let teamMemberId of teamMemberIds) {
+            for(const teamMemberId of teamMemberIds) {
                 const data = await getUserData(teamMemberId);
                 teamMembers.push(data);
             }

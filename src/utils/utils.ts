@@ -1,7 +1,7 @@
-import { ListItemColumn, UserData } from "types/types";
+import {ListItemColumn, UserData} from 'types/types';
 
 export const getUserColumns = (user: UserData): ListItemColumn[] => {
-    const { firstName, lastName, displayName, location } = user;
+    const {firstName, lastName, displayName, location} = user;
 
     return [
         {

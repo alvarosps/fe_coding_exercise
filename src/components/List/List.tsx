@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ListItem } from 'types/types';
+import {ListItem} from 'types/types';
 import Card from '../Card/Card';
-import { Spinner } from '../Spinner/Spinner';
-import { ListContainer } from './List.styled';
+import {Spinner} from '../Spinner/Spinner';
+import {ListContainer} from './List.styled';
 
 interface ListProps {
     items: ListItem[];
@@ -11,7 +11,7 @@ interface ListProps {
 }
 
 const List = (props: ListProps): JSX.Element => {
-    const { items, hasNavigation = true, isLoading } = props;
+    const {items, hasNavigation = true, isLoading} = props;
 
     return (
         <ListContainer>

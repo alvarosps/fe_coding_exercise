@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { useLocation } from 'react-router-dom';
-import { UserData } from 'types/types';
+import {useLocation} from 'react-router-dom';
+import {UserData} from 'types/types';
+import {getUserColumns} from 'utils/utils';
 import Card from '../../components/Card/Card';
-import { GlobalContainer } from '../../components/global.styled';
+import {GlobalContainer} from '../../components/global.styled';
 import Header from '../../components/Header/Header';
-import { getUserColumns } from 'utils/utils';
 
 const getUserCard = (user: UserData) => {
     const columns = getUserColumns(user);
