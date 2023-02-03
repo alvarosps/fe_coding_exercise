@@ -17,8 +17,7 @@ const List = (props: ListProps): JSX.Element => {
         <ListContainer>
             {isLoading && <Spinner />}
             {!isLoading &&
-                items.map(({url, id, columns, navigationProps}, index) => {
-                    return (
+                items.map(({url, id, columns, navigationProps}, index) => (
                         <Card
                             key={`${id}-${index}`}
                             id={id}
@@ -27,8 +26,8 @@ const List = (props: ListProps): JSX.Element => {
                             hasNavigation={hasNavigation}
                             url={url}
                         />
-                    );
-                })}
+                    )
+                )}
         </ListContainer>
     );
 };

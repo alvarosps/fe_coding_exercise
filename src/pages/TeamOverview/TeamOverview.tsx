@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useLocation, useParams} from 'react-router-dom';
-import {ListItem, UserData} from 'types/types';
+import {ListItem, Location, Teams, UserData} from 'types/types';
 import {getUserColumns} from 'utils/utils';
 import {getTeamOverview, getUserData} from '../../api/api';
 import Card from '../../components/Card/Card';
@@ -41,7 +41,7 @@ interface PageState {
 }
 
 const TeamOverview = (): JSX.Element => {
-    const location = useLocation();
+    const location: Location<Teams> = useLocation();
     const {teamId} = useParams();
     const [pageData, setPageData] = React.useState<PageState>({});
     const [isLoading, setIsLoading] = React.useState<boolean>(true);

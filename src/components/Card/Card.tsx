@@ -40,7 +40,7 @@ const Card = (props: CardProps): JSX.Element => {
         >
             {
                 columns.map(({key: columnKey, value}, index) => (
-                    <p key={`${columnKey}-${index}`}>
+                    <p data-testid='card-column' key={`${columnKey}-${index}`}>
                         <strong>{columnKey}</strong>&nbsp;{value}
                     </p>
                 ))

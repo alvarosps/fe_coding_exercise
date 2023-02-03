@@ -1,3 +1,9 @@
+import { Path } from "react-router-dom";
+
+export interface Location<T> extends Path {
+    state: T;
+}
+
 export interface Teams {
     id: string;
     name: string;
