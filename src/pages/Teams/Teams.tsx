@@ -5,17 +5,18 @@ import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
 import { GlobalContainer } from '../../components/global.styled';
 
-var MapT = (teams: TeamsList[]) => {
+const getTeamsList = (teams: TeamsList[]): ListItem[] => {
     return teams.map(team => {
+        const { id, name } = team;
         var columns = [
             {
                 key: 'Name',
-                value: team.name,
+                value: name,
             },
         ];
         return {
-            id: team.id,
-            url: `/team/${team.id}`,
+            id: id,
+            url: `/team/${id}`,
             columns,
             navigationProps: team,
         } as ListItem;
@@ -23,8 +24,8 @@ var MapT = (teams: TeamsList[]) => {
 };
 
 const Teams = (): JSX.Element => {
-    const [teams, setTeams] = React.useState<any>([]);
-    const [isLoading, setIsLoading] = React.useState<any>(true);
+    const [teams, setTeams] = React.useState<TeamsList[]>([]);
+    const [isLoading, setIsLoading] = React.useState<boolean>(true);
 
     React.useEffect(() => {
         const getTeams = async () => {
@@ -32,13 +33,14 @@ const Teams = (): JSX.Element => {
             setTeams(response);
             setIsLoading(false);
         };
+        
         getTeams();
     }, []);
 
     return (
         <GlobalContainer>
             <Header title="Teams" showBackButton={false} />
-            <List items={MapT(teams)} isLoading={isLoading} />
+            <List items={getTeamsList(teams)} isLoading={isLoading} />
         </GlobalContainer>
     );
 };

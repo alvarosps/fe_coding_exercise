@@ -5,7 +5,7 @@ import { Spinner } from '../Spinner/Spinner';
 import { ListContainer } from './List.styled';
 
 interface ListProps {
-    items?: ListItem[];
+    items: ListItem[];
     hasNavigation?: boolean;
     isLoading: boolean;
 }

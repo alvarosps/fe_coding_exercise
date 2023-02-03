@@ -16,16 +16,16 @@ const Header = (props: HeaderProps): JSX.Element => {
     const { title, showBackButton = true } = props;
 
     const navigate = useNavigate();
-    
+
+    const goToPreviousPage = (): void => {
+        navigate(-1);
+    }
+
     return (
         <HeaderContainer>
             <NavigationHeader>
                 {showBackButton && (
-                    <HeaderBackButton
-                        onClick={() => {
-                            navigate(-1);
-                        }}
-                    >
+                    <HeaderBackButton onClick={goToPreviousPage}>
                         🔙
                     </HeaderBackButton>
                 )}

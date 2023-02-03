@@ -12,21 +12,23 @@ jest.mock('react-router-dom', () => ({
 
 describe('Card', () => {
     it('should render card with single column', () => {
+        const id = "test-id";
         var columns = [{key: 'columnKey', value: 'columnValue'}];
-        render(<Card columns={columns} />);
+        render(<Card id={id} columns={columns} />);
 
         expect(screen.getByText('columnKey')).toBeInTheDocument();
         expect(screen.getByText('columnValue')).toBeInTheDocument();
     });
 
     it('should render card with multiple columns', () => {
+        const id = "test-id";
         var columns = [
             {key: 'columnKey1', value: 'columnValue1'},
             {key: 'columnKey2', value: 'columnValue2'},
             {key: 'columnKey3', value: 'columnValue3'},
             {key: 'columnKey4', value: ''},
         ];
-        render(<Card columns={columns} />);
+        render(<Card id={id} columns={columns} />);
 
         expect(screen.getByText('columnKey1')).toBeInTheDocument();
         expect(screen.getByText('columnValue1')).toBeInTheDocument();
@@ -44,6 +46,7 @@ describe('Card', () => {
         } as Teams;
         render(
             <Card
+                id={navProps.id}
                 columns={[{key: 'columnKey', value: 'columnValue'}]}
                 url="path"
                 navigationProps={navProps}
@@ -56,7 +59,9 @@ describe('Card', () => {
     });
 
     it('should not navigate when card is clicked and navigation is disabled', () => {
-        render(<Card columns={[{key: 'columnKey', value: 'columnValue'}]} hasNavigation={false} />);
+        const id = "test-id";
+
+        render(<Card id={id} columns={[{key: 'columnKey', value: 'columnValue'}]} hasNavigation={false} />);
 
         fireEvent.click(screen.getByText('columnKey'));
 
