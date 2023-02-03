@@ -7,7 +7,7 @@ import { ListContainer } from './List.styled';
 interface ListProps {
     items?: ListItem[];
     hasNavigation?: boolean;
-    isLoading: string;
+    isLoading: boolean;
 }
 
 const List = (props: ListProps): JSX.Element => {

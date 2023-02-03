@@ -16,6 +16,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     const { title, showBackButton = true } = props;
 
     const navigate = useNavigate();
+    
     return (
         <HeaderContainer>
             <NavigationHeader>
