@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useLocation } from 'react-router-dom';
 import { UserData } from 'types/types';
-import Card from '../components/Card/Card';
-import { GlobalContainer } from '../components/global.styled';
-import Header from '../components/Header/Header';
+import Card from '../../components/Card/Card';
+import { GlobalContainer } from '../../components/global.styled';
+import Header from '../../components/Header/Header';
 
 var mapU = (user: UserData) => {
     var columns = [
