@@ -39,8 +39,8 @@ const Card = (props: CardProps): JSX.Element => {
             onClick={handleOnClick}
         >
             {
-                columns.map(({key: columnKey, value}) => (
-                    <p key={columnKey}>
+                columns.map(({key: columnKey, value}, index) => (
+                    <p key={`${columnKey}-${index}`}>
                         <strong>{columnKey}</strong>&nbsp;{value}
                     </p>
                 ))
