@@ -1,7 +1,7 @@
 import React from 'react';
 import {fireEvent, render, screen} from '@testing-library/react';
-import {Teams} from 'types';
-import Card from '..';
+import {TeamsType} from 'types/types';
+import Card from '../Card';
 
 const mockUseNavigate = jest.fn();
 
@@ -12,28 +12,37 @@ jest.mock('react-router-dom', () => ({
 
 describe('Card', () => {
     it('should render card with single column', () => {
-        var columns = [{key: 'columnKey', value: 'columnValue'}];
-        render(<Card columns={columns} />);
+        const id = 'test-id';
+        const columns = [{key: 'columnKey', value: 'columnValue'}];
+        render(<Card id={id} columns={columns} />);
+
+        expect(screen.queryAllByTestId('card-column')).toHaveLength(columns.length);
 
         expect(screen.getByText('columnKey')).toBeInTheDocument();
         expect(screen.getByText('columnValue')).toBeInTheDocument();
     });
 
     it('should render card with multiple columns', () => {
+        const id = 'test-id';
         var columns = [
             {key: 'columnKey1', value: 'columnValue1'},
             {key: 'columnKey2', value: 'columnValue2'},
             {key: 'columnKey3', value: 'columnValue3'},
             {key: 'columnKey4', value: ''},
         ];
-        render(<Card columns={columns} />);
+        render(<Card id={id} columns={columns} />);
+
+        expect(screen.queryAllByTestId('card-column')).toHaveLength(columns.length);
 
         expect(screen.getByText('columnKey1')).toBeInTheDocument();
         expect(screen.getByText('columnValue1')).toBeInTheDocument();
+
         expect(screen.getByText('columnKey2')).toBeInTheDocument();
         expect(screen.getByText('columnValue2')).toBeInTheDocument();
+
         expect(screen.getByText('columnKey3')).toBeInTheDocument();
         expect(screen.getByText('columnValue3')).toBeInTheDocument();
+        
         expect(screen.getByText('columnKey4')).toBeInTheDocument();
     });
 
@@ -41,9 +50,11 @@ describe('Card', () => {
         const navProps = {
             id: '1',
             name: 'Team 1',
-        } as Teams;
+        } as TeamsType;
+
         render(
             <Card
+                id={navProps.id}
                 columns={[{key: 'columnKey', value: 'columnValue'}]}
                 url="path"
                 navigationProps={navProps}
@@ -56,7 +67,9 @@ describe('Card', () => {
     });
 
     it('should not navigate when card is clicked and navigation is disabled', () => {
-        render(<Card columns={[{key: 'columnKey', value: 'columnValue'}]} hasNavigation={false} />);
+        const id = 'test-id';
+
+        render(<Card id={id} columns={[{key: 'columnKey', value: 'columnValue'}]} hasNavigation={false} />);
 
         fireEvent.click(screen.getByText('columnKey'));
 

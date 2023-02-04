@@ -1,4 +1,3 @@
-import * as React from 'react';
 import styled, {keyframes} from 'styled-components';
 
 const spinnerAnimation = keyframes`
@@ -10,7 +9,7 @@ from {
     }
 `;
 
-const SpinnerBody = styled.div`
+export const SpinnerBody = styled.div`
     height: 4rem;
     width: 4rem;
     border: 4px solid #d1d5db;
@@ -18,7 +17,3 @@ const SpinnerBody = styled.div`
     border-radius: 50%;
     animation: ${spinnerAnimation} 800ms linear infinite;
 `;
-
-export const Spinner = () => {
-    return <SpinnerBody data-testid="spinner" />;
-};

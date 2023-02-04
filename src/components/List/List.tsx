@@ -1,22 +1,23 @@
 import * as React from 'react';
-import {ListItem} from 'types';
-import Card from '../Card';
-import {Spinner} from '../Spinner';
-import {Container} from './styles';
+import {ListItemType} from 'types/types';
+import Card from '../Card/Card';
+import {Spinner} from '../Spinner/Spinner';
+import {ListContainer} from './List.styled';
 
-interface Props {
-    items?: ListItem[];
+interface ListProps {
+    items: ListItemType[];
     hasNavigation?: boolean;
-    isLoading: string;
+    isLoading: boolean;
 }
 
-const List = ({items, hasNavigation = true, isLoading}: Props) => {
+const List = (props: ListProps): JSX.Element => {
+    const {items, hasNavigation = true, isLoading} = props;
+
     return (
-        <Container>
+        <ListContainer>
             {isLoading && <Spinner />}
             {!isLoading &&
-                items.map(({url, id, columns, navigationProps}, index) => {
-                    return (
+                items.map(({url, id, columns, navigationProps}, index) => (
                         <Card
                             key={`${id}-${index}`}
                             id={id}
@@ -25,9 +26,9 @@ const List = ({items, hasNavigation = true, isLoading}: Props) => {
                             hasNavigation={hasNavigation}
                             url={url}
                         />
-                    );
-                })}
-        </Container>
+                    )
+                )}
+        </ListContainer>
     );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {render, screen} from '@testing-library/react';
-import List from '..';
+import List from '../List';
 
 jest.mock('react-router-dom', () => ({
     ...(jest.requireActual('react-router-dom') as any),
@@ -67,6 +67,7 @@ describe('List', () => {
         ];
         render(<List isLoading={false} items={items} />);
 
+        expect(screen.queryByTestId('spinner')).not.toBeInTheDocument();
         expect(screen.getByTestId('cardContainer-1')).toBeInTheDocument();
         expect(screen.getByTestId('cardContainer-2')).toBeInTheDocument();
     });

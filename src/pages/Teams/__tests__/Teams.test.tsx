@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {fireEvent, render, screen, waitFor, act} from '@testing-library/react';
-import * as API from '../../api';
+import {render, screen, waitFor} from '@testing-library/react';
+import * as API from '../../../services/api';
 import Teams from '../Teams';
 
 jest.mock('react-router-dom', () => ({
@@ -29,7 +29,21 @@ describe('Teams', () => {
     });
 
     it('should render spinner while loading', async () => {
-        // TODO - Add code for this test
+        jest.spyOn(API, 'getTeams').mockResolvedValue([
+            {
+                id: '1',
+                name: 'Team1',
+            },
+        ]);
+
+        render(<Teams />);
+        
+        expect(screen.getByTestId('spinner')).toBeInTheDocument();
+
+        await waitFor(() => {
+            expect(screen.getByText('Team1')).toBeInTheDocument();
+        });
+        expect(screen.queryByTestId('spinner')).toBeNull();
     });
 
     it('should render teams list', async () => {
