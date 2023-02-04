@@ -3,7 +3,7 @@ import {useLocation} from 'react-router-dom';
 import {UserDataType, Location} from 'types/types';
 import {getUserColumns} from 'utils/utils';
 import Card from '../../components/Card/Card';
-import {Container} from '../../components/global.styled';
+import {Container, OverviewHeader} from '../../components/global.styled';
 import Header from '../../components/Header/Header';
 
 const getUserCard = (user: UserDataType): JSX.Element => {
@@ -17,9 +17,8 @@ const UserOverview = (): JSX.Element => {
 
     return (
         <Container>
-            <Header
-                title={`User ${location.state.firstName} ${location.state.lastName}`}
-            />
+            <Header title='User' />
+            <OverviewHeader style={{height: '0'}} />
             {getUserCard(location.state)}
         </Container>
     );

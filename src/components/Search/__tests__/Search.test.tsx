@@ -54,7 +54,7 @@ describe('Search', () => {
                 lastName: 'Test',
                 displayName: 'userTest',
                 location: '',
-                avatar: '',
+                avatarUrl: '',
             },
             {
                 id: '2',
@@ -62,7 +62,7 @@ describe('Search', () => {
                 lastName: 'Member',
                 displayName: 'memberExample',
                 location: '',
-                avatar: '',
+                avatarUrl: '',
             },
         ];
 

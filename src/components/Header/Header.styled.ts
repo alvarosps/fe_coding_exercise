@@ -1,31 +1,38 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
-    height: 100px;
-    margin: 10px;
+    background-color: #f5f5f5;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    height: 60px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    justify-content: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
 `;
 
-export const HeaderTitle = styled.h1``;
+export const HeaderTitleContainer = styled.h1`
+    font-size: 22px;
+`;
 
-export const NavigationHeader = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
+export const HeaderSubtitleContainer = styled.h3`
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
 `;
 
 export const HeaderBackButton = styled.button`
+    background: transparent;
+    border: 0;
+    padding: 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 5px;
-    font-weight: bold;
-    font-size: 18px;
     cursor: pointer;
-    width: 40px;
-    height: 40px;
-    outline: 0;
+    position: fixed;
+    left: 0;
 `;
+

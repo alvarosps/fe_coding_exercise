@@ -36,6 +36,11 @@ const Card = (props: CardProps): JSX.Element => {
         }
     };
 
+    const name = columns.find(col => col.key === 'name')?.value;
+    const displayName = columns.find(col => col.key === 'displayName')?.value;
+    const userLocation = columns.find(col => col.key === 'location')?.value;
+    const avatarUrl = columns.find(col => col.key === 'avatarUrl')?.value;
+
     return (
         <CardContainer
             data-testid={`cardContainer-${id}`}
@@ -44,22 +49,22 @@ const Card = (props: CardProps): JSX.Element => {
             isUser={isUser}
             isLeader={isLeader}
         >
-            {isLeader && <CardLeader>Team Leader</CardLeader>}
-            <CardAvatar showAvatar={isUser}>
-                <img src={columns.find(col => col.key === 'avatar')?.value} alt='User avatar' />
+            {isLeader && <CardLeader data-testid='card-leader'>Team Leader</CardLeader>}
+            <CardAvatar showAvatar={isUser} data-testid='card-avatar'>
+                <img src={avatarUrl} alt='avatar' />
             </CardAvatar>
             <CardBody>
                 <CardBodyContent>
-                    <CardTitle>
-                        {columns.find(col => col.key === 'name')?.value}
+                    <CardTitle data-testid='card-name'>
+                        {name}
                     </CardTitle>
                     {isUser && (
                         <React.Fragment>
-                            <CardText>
-                                Display Name: {columns.find(col => col.key === 'displayName')?.value}
+                            <CardText data-testid='card-display-name'>
+                                Display Name: {displayName}
                             </CardText>
-                            <CardText>
-                                Location: {columns.find(col => col.key === 'location')?.value}
+                            <CardText data-testid='card-location'>
+                                Location: {userLocation}
                             </CardText>
                         </React.Fragment>
                     )}

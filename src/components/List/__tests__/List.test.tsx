@@ -14,7 +14,7 @@ describe('List', () => {
                 id: '1',
                 columns: [
                     {
-                        key: 'columnKey1',
+                        key: 'name',
                         value: 'columnValue1',
                     },
                 ],
@@ -32,7 +32,7 @@ describe('List', () => {
                 id: '1',
                 columns: [
                     {
-                        key: 'columnKey1',
+                        key: 'name',
                         value: 'columnValue1',
                     },
                 ],
@@ -50,7 +50,7 @@ describe('List', () => {
                 id: '1',
                 columns: [
                     {
-                        key: 'columnKey1',
+                        key: 'name',
                         value: 'columnValue1',
                     },
                 ],
@@ -59,13 +59,13 @@ describe('List', () => {
                 id: '2',
                 columns: [
                     {
-                        key: 'columnKey2',
+                        key: 'displayName',
                         value: 'columnValue2',
                     },
                 ],
             },
         ];
-        render(<List isLoading={false} items={items} />);
+        render(<List isLoading={false} items={items} isUser={true} />);
 
         expect(screen.queryByTestId('spinner')).not.toBeInTheDocument();
         expect(screen.getByTestId('cardContainer-1')).toBeInTheDocument();

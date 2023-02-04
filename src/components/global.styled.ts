@@ -15,3 +15,21 @@ export const SearchError = styled.div`
     font-weight: bold;
     font-size: 16px;
 `;
+
+export const OverviewHeader = styled.header`
+    width: 100%;
+    height: 50px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0;
+    box-sizing: border-box;
+    margin-top: 40px;
+`;
+
+export const OverviewTitle = styled.header`
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+`;

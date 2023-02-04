@@ -15,7 +15,7 @@ const List = (props: ListProps): JSX.Element => {
     const {items, hasNavigation = true, isLoading, isUser = false} = props;
 
     return (
-        <ListContainer>
+        <ListContainer isUser={isUser}>
             {isLoading && <Spinner />}
             {!isLoading &&
                 items.map(({url, id, columns, navigationProps}, index) => (

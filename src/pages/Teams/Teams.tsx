@@ -58,6 +58,7 @@ const Teams = (): JSX.Element => {
                 notifyError={setSearchError}
                 placeholder='Search by team name'
                 searchProps={['name']}
+                style={{width: '25%', marginTop: '40px'}}
             />
             {!searchError && (
                 <List

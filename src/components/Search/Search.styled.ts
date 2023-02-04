@@ -5,15 +5,17 @@ export const SearchContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 50px;
-  margin: 10px 0;
+  width: 20%;
 `;
 
 export const SearchInput = styled.input`
-  width: 60%;
-  height: 40px;
-  padding: 10px;
-  font-size: 18px;
+  width: 50%;
+  height: 30px;
+  padding: 5px 10px;
+  border: 1px solid #CCCCCC;
   border-radius: 5px;
-  border: 1px solid lightgray;
   outline: none;
+  font-size: 16px;
+  box-sizing: border-box;
+  margin-right: 20px;
 `;

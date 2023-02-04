@@ -107,7 +107,11 @@
     "import/no-named-as-default-member": 0,
     "import/no-extraneous-dependencies": [
       "error",
-      {"devDependencies": ["**/*test*.js", "**/*test*.ts", "**/*test*.tsx"]}
+      {
+        "devDependencies": ["**/*test*.js", "**/*test*.ts", "**/*test*.tsx"],
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
     ],
     "import/no-named-as-default": 0,
     "import/extensions": 0,

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div<{hasNavigation: boolean, isUser: boolean, isLeader: boolean}>`
-  width: calc(33.33% - 20px);
   margin: 10px;
   background-color: white;
   border-radius: 10px;
@@ -27,10 +26,17 @@ export const CardContainer = styled.div<{hasNavigation: boolean, isUser: boolean
     grid-template-areas:
         "header main main main";
   `}
+
+  ${({hasNavigation}) => hasNavigation && `
+    &:hover {
+        background-color: #cce2ff;
+    }
+  `}
 `;
 
 export const CardAvatar = styled.div<{showAvatar: boolean}>`
   background-color: #f2f2f2;
+  margin-left: 5px;
   padding: 25px;
   img {
     width: 100px;
