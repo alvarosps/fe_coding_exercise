@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {ListItem, Teams as TeamsList} from 'types/types';
-import {getTeams as fetchTeams} from '../../api/api';
+import {ListItemType, TeamsType} from 'types/types';
+import {getTeams} from '../../services/api';
 import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
-import {GlobalContainer} from '../../components/global.styled';
+import {Container} from '../../components/global.styled';
 
-const getTeamsList = (teams: TeamsList[]): ListItem[] => {
+const getTeamsList = (teams: TeamsType[]): ListItemType[] => {
     return teams.map(team => {
         const {id, name} = team;
         const columns = [
@@ -19,29 +19,29 @@ const getTeamsList = (teams: TeamsList[]): ListItem[] => {
             url: `/team/${id}`,
             columns,
             navigationProps: team,
-        } as ListItem;
+        } as ListItemType;
     });
 };
 
 const Teams = (): JSX.Element => {
-    const [teams, setTeams] = React.useState<TeamsList[]>([]);
+    const [teams, setTeams] = React.useState<TeamsType[]>([]);
     const [isLoading, setIsLoading] = React.useState<boolean>(true);
 
     React.useEffect(() => {
-        const getTeams = async () => {
-            const response = await fetchTeams();
+        const fetchTeams = async () => {
+            const response = await getTeams();
             setTeams(response);
             setIsLoading(false);
         };
         
-        getTeams();
+        fetchTeams();
     }, []);
 
     return (
-        <GlobalContainer>
+        <Container>
             <Header title="Teams" showBackButton={false} />
-            <List items={getTeamsList(teams)} isLoading={isLoading} />
-        </GlobalContainer>
+            <List data-testid="teams-list" items={getTeamsList(teams)} isLoading={isLoading} />
+        </Container>
     );
 };
 

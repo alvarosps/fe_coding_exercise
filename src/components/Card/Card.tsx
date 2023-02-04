@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {useNavigate} from 'react-router-dom';
-import {ListItemColumn, Teams, UserData} from 'types/types';
+import {ListItemColumnType, TeamsType, UserDataType} from 'types/types';
 import {CardContainer} from './Card.styled';
 
 interface CardProps {
     id: string;
     url?: string;
-    columns: ListItemColumn[];
+    columns: ListItemColumnType[];
     hasNavigation?: boolean;
-    navigationProps?: UserData | Teams;
+    navigationProps?: UserDataType | TeamsType;
 }
 
 const Card = (props: CardProps): JSX.Element => {

@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {useLocation, useParams} from 'react-router-dom';
-import {ListItem, Location, Teams, UserData} from 'types/types';
+import {ListItemType, Location, TeamsType, UserDataType} from 'types/types';
 import {getUserColumns} from 'utils/utils';
-import {getTeamOverview, getUserData} from '../../api/api';
+import {getTeamOverview, getUserData} from '../../services/api';
 import Card from '../../components/Card/Card';
-import {GlobalContainer} from '../../components/global.styled';
+import {Container} from '../../components/global.styled';
 import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
 
-const getUsersCards = (users: UserData[]): ListItem[] => {
+const getUsersCards = (users: UserDataType[]): ListItemType[] => {
     return users.map((user) => {
         const columns = getUserColumns(user);
         
@@ -18,10 +18,10 @@ const getUsersCards = (users: UserData[]): ListItem[] => {
             columns,
             navigationProps: user,
         };
-    }) as ListItem[];
+    }) as ListItemType[];
 };
 
-const getTeamLeadCard = (teamLead: UserData): JSX.Element => {
+const getTeamLeadCard = (teamLead: UserDataType): JSX.Element => {
     const {id} = teamLead;
 
     const columns = [
@@ -32,16 +32,16 @@ const getTeamLeadCard = (teamLead: UserData): JSX.Element => {
         ...getUserColumns(teamLead),
     ];
 
-    return <Card id={id} columns={columns} url={`/user/${id}`} navigationProps={teamLead} />;
+    return <Card id={id} data-testid='team-lead' columns={columns} url={`/user/${id}`} navigationProps={teamLead} />;
 };
 
 interface PageState {
-    teamLead?: UserData;
-    teamMembers?: UserData[];
+    teamLead?: UserDataType;
+    teamMembers?: UserDataType[];
 }
 
 const TeamOverview = (): JSX.Element => {
-    const location: Location<Teams> = useLocation();
+    const location: Location<TeamsType> = useLocation();
     const {teamId} = useParams();
     const [pageData, setPageData] = React.useState<PageState>({});
     const [isLoading, setIsLoading] = React.useState<boolean>(true);
@@ -67,11 +67,11 @@ const TeamOverview = (): JSX.Element => {
     }, [teamId]);
 
     return (
-        <GlobalContainer>
+        <Container>
             <Header title={`Team ${location.state.name}`} />
             {!isLoading && getTeamLeadCard(pageData.teamLead)}
-            <List isLoading={isLoading} items={getUsersCards(pageData?.teamMembers ?? [])} />
-        </GlobalContainer>
+            <List data-testid="team-overview" isLoading={isLoading} items={getUsersCards(pageData?.teamMembers ?? [])} />
+        </Container>
     );
 };
 

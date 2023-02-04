@@ -1,21 +1,21 @@
-import { Path } from "react-router-dom";
+import {Path} from 'react-router-dom';
 
 export interface Location<T> extends Path {
     state: T;
 }
 
-export interface Teams {
+export type TeamsType = {
     id: string;
     name: string;
 }
 
-export interface TeamOverview {
+export type TeamOverviewType = {
     id: string;
     teamLeadId: string;
     teamMemberIds: string[];
 }
 
-export interface UserData {
+export type UserDataType = {
     id: string;
     firstName: string;
     lastName: string;
@@ -24,14 +24,14 @@ export interface UserData {
     avatar: string;
 }
 
-export interface ListItemColumn {
+export type ListItemColumnType = {
     key: string;
     value: string;
 }
 
-export interface ListItem {
+export type ListItemType = {
     id: string;
     url?: string;
-    columns: Array<ListItemColumn>;
-    navigationProps?: UserData | Teams;
+    columns: Array<ListItemColumnType>;
+    navigationProps?: UserDataType | TeamsType;
 }

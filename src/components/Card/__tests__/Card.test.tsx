@@ -1,6 +1,6 @@
 import React from 'react';
 import {fireEvent, render, screen} from '@testing-library/react';
-import {Teams} from 'types/types';
+import {TeamsType} from 'types/types';
 import Card from '../Card';
 
 const mockUseNavigate = jest.fn();
@@ -16,7 +16,7 @@ describe('Card', () => {
         const columns = [{key: 'columnKey', value: 'columnValue'}];
         render(<Card id={id} columns={columns} />);
 
-        expect(screen.queryAllByTestId("card-column").length).toBe(columns.length);
+        expect(screen.queryAllByTestId('card-column')).toHaveLength(columns.length);
 
         expect(screen.getByText('columnKey')).toBeInTheDocument();
         expect(screen.getByText('columnValue')).toBeInTheDocument();
@@ -32,7 +32,7 @@ describe('Card', () => {
         ];
         render(<Card id={id} columns={columns} />);
 
-        expect(screen.queryAllByTestId("card-column").length).toBe(columns.length);
+        expect(screen.queryAllByTestId('card-column')).toHaveLength(columns.length);
 
         expect(screen.getByText('columnKey1')).toBeInTheDocument();
         expect(screen.getByText('columnValue1')).toBeInTheDocument();
@@ -50,7 +50,7 @@ describe('Card', () => {
         const navProps = {
             id: '1',
             name: 'Team 1',
-        } as Teams;
+        } as TeamsType;
 
         render(
             <Card

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {ListItem} from 'types/types';
+import {ListItemType} from 'types/types';
 import Card from '../Card/Card';
 import {Spinner} from '../Spinner/Spinner';
 import {ListContainer} from './List.styled';
 
 interface ListProps {
-    items: ListItem[];
+    items: ListItemType[];
     hasNavigation?: boolean;
     isLoading: boolean;
 }
