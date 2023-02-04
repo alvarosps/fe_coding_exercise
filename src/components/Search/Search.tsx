@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {TeamsType, UserDataType} from 'types/types';
+import {SearchInput} from './Search.styled';
 
 interface SearchProps<ObjectType> {
     originalObject: ObjectType[];
@@ -40,7 +41,7 @@ const Search = <ObjectType extends TeamsType | UserDataType>(props: SearchProps<
     }, [searchValue, notifyError, originalObject, searchProps, updateFilteredObject]);
 
     return (
-        <input type='text' value={searchValue} onChange={handleChange} placeholder={placeholder}/>
+        <SearchInput type='text' value={searchValue} onChange={handleChange} placeholder={placeholder}/>
     );
 };
 
