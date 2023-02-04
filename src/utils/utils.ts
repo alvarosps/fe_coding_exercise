@@ -1,6 +1,6 @@
-import {ListItemColumn, UserData} from 'types/types';
+import {ListItemColumnType, UserDataType} from 'types/types';
 
-export const getUserColumns = (user: UserData): ListItemColumn[] => {
+export const getUserColumns = (user: UserDataType): ListItemColumnType[] => {
     const {firstName, lastName, displayName, location} = user;
 
     return [
