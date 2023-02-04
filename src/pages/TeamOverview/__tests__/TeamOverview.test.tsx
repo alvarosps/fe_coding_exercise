@@ -17,6 +17,19 @@ jest.mock('react-router-dom', () => ({
     }),
 }));
 
+const getUserData = (id) => {
+    const userData: UserDataType = {
+        id,
+        firstName: 'userData',
+        lastName: 'userData',
+        displayName: 'userData',
+        location: '',
+        avatar: '',
+    };
+
+    return userData;
+}
+
 describe('TeamOverview', () => {
     beforeAll(() => {
         jest.useFakeTimers();
@@ -36,16 +49,18 @@ describe('TeamOverview', () => {
             teamLeadId: '2',
             teamMemberIds: ['3', '4', '5'],
         };
-        const userData: UserDataType = {
-            id: '2',
-            firstName: 'userData',
-            lastName: 'userData',
-            displayName: 'userData',
-            location: '',
-            avatar: '',
-        };
+        const teamLeadData = getUserData('2');
+        const teamMembersData = [
+            getUserData('3'),
+            getUserData('4'),
+            getUserData('5'),
+        ]
         jest.spyOn(API, 'getTeamOverview').mockImplementationOnce(() => Promise.resolve(teamOverview));
-        jest.spyOn(API, 'getUserData').mockImplementation(() => Promise.resolve(userData));
+        jest.spyOn(API, 'getUserData')
+            .mockImplementationOnce(() => Promise.resolve(teamLeadData))
+            .mockImplementationOnce(() => Promise.resolve(teamMembersData[0]))
+            .mockImplementationOnce(() => Promise.resolve(teamMembersData[1]))
+            .mockImplementationOnce(() => Promise.resolve(teamMembersData[2]));
 
         render(<TeamOverview />);
         
