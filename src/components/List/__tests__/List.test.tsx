@@ -65,7 +65,7 @@ describe('List', () => {
                 ],
             },
         ];
-        render(<List isLoading={false} items={items} isUser={true} />);
+        render(<List isLoading={false} items={items} isUser />);
 
         expect(screen.queryByTestId('spinner')).not.toBeInTheDocument();
         expect(screen.getByTestId('cardContainer-1')).toBeInTheDocument();

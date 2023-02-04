@@ -28,7 +28,7 @@ describe('Card', () => {
             {key: 'location', value: 'columnValue3'},
             {key: 'avatarUrl', value: ''},
         ];
-        render(<Card id={id} columns={columns} isUser={true} />);
+        render(<Card id={id} columns={columns} isUser />);
 
         expect(screen.getByTestId('card-name')).toBeInTheDocument();
         expect(screen.getByTestId('card-display-name')).toBeInTheDocument();

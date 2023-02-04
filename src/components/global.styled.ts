@@ -26,10 +26,21 @@ export const OverviewHeader = styled.header`
     padding: 0;
     box-sizing: border-box;
     margin-top: 40px;
+
+    @media (max-width: 468px) {
+        flex-direction: column;
+        align-items: space-around;
+        height: 60px;
+        padding: 10px;
+    }
 `;
 
 export const OverviewTitle = styled.header`
     font-size: 20px;
     font-weight: bold;
     margin: 0;
+
+    @media (max-width: 468px) {
+        margin-bottom: 10px;
+    }
 `;

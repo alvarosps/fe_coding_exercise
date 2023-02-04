@@ -6,6 +6,10 @@ export const SearchContainer = styled.div`
   align-items: center;
   height: 50px;
   width: 20%;
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -18,4 +22,8 @@ export const SearchInput = styled.input`
   font-size: 16px;
   box-sizing: border-box;
   margin-right: 20px;
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
