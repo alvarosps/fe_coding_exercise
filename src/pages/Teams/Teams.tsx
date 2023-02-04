@@ -57,7 +57,7 @@ const Teams = (): JSX.Element => {
                 updateFilteredObject={setFilteredTeams}
                 notifyError={setSearchError}
                 placeholder='Search by team name'
-                searchProp='name'
+                searchProps={['name']}
             />
             {!searchError && (
                 <List

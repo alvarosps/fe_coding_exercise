@@ -1,7 +1,7 @@
 import React from 'react';
 import {fireEvent, render, screen} from '@testing-library/react';
+import {TeamsType, UserDataType} from 'types/types';
 import Search from '../Search';
-import { TeamsType, UserDataType } from 'types/types';
 
 describe('Search', () => {
     it('should filter the Teams array by the given query', () => {
@@ -13,7 +13,7 @@ describe('Search', () => {
             {
                 id: '2',
                 name: 'example',
-            }
+            },
         ];
 
         let filteredObject: TeamsType[] = [];
@@ -21,27 +21,24 @@ describe('Search', () => {
             filteredObject = [...object];
         });
 
-        let error: boolean = false;
-        const updateError = (hasError: boolean) => {
-            error = hasError;
-        };
+        const updateError = () => {};
 
-        const { queryByPlaceholderText } = render(
+        render(
             <Search
                 originalObject={teamsMock}
                 updateFilteredObject={updateFilteredObject}
                 notifyError={updateError}
                 placeholder='Search'
-                searchProp='name'
+                searchProps={['name']}
             />
         );
 
-        const searchInput = queryByPlaceholderText('Search');
+        const searchInput = screen.queryByPlaceholderText('Search');
         const searchValue = 'tes';
         fireEvent.change(searchInput, {
             target: {
-                value: searchValue
-            }
+                value: searchValue,
+            },
         });
 
         expect(updateFilteredObject).toHaveBeenCalled();
@@ -49,7 +46,7 @@ describe('Search', () => {
         expect(filteredObject[0].name).toContain(searchValue);
     });
 
-    it('should filter the Teams array by the given query', () => {
+    it('should filter the Users array by the given query', () => {
         const usersMock: UserDataType[] = [
             {
                 id: '1',
@@ -66,7 +63,7 @@ describe('Search', () => {
                 displayName: 'memberExample',
                 location: '',
                 avatar: '',
-            }
+            },
         ];
 
         let filteredObject: UserDataType[] = [];
@@ -74,31 +71,27 @@ describe('Search', () => {
             filteredObject = [...object];
         });
 
-        let error: boolean = false;
-        const updateError = (hasError: boolean) => {
-            error = hasError;
-        };
+        const updateError = () => {};
 
-        const { queryByPlaceholderText } = render(
+        render(
             <Search
                 originalObject={usersMock}
                 updateFilteredObject={updateFilteredObject}
                 notifyError={updateError}
                 placeholder='Search'
-                searchProp='displayName'
+                searchProps={['firstName', 'lastName', 'displayName']}
             />
         );
 
-        const searchInput = queryByPlaceholderText('Search');
+        const searchInput = screen.queryByPlaceholderText('Search');
         const searchValue = 'xam';
         fireEvent.change(searchInput, {
             target: {
-                value: searchValue
-            }
+                value: searchValue,
+            },
         });
 
         expect(updateFilteredObject).toHaveBeenCalled();
-        console.log(filteredObject);
         expect(filteredObject).toHaveLength(1);
         expect(filteredObject[0].displayName).toContain(searchValue);
     });
@@ -116,27 +109,27 @@ describe('Search', () => {
             filteredObject = [...object];
         });
 
-        let error: boolean = false;
+        let error = false;
         const updateError = jest.fn((hasError: boolean) => {
             error = hasError;
         });
 
-        const { queryByPlaceholderText } = render(
+        render(
             <Search
                 originalObject={teamsMock}
                 updateFilteredObject={updateFilteredObject}
                 notifyError={updateError}
                 placeholder='Search'
-                searchProp='name'
+                searchProps={['name']}
             />
         );
 
-        const searchInput = queryByPlaceholderText('Search');
+        const searchInput = screen.queryByPlaceholderText('Search');
         const searchValue = 'ex';
         fireEvent.change(searchInput, {
             target: {
-                value: searchValue
-            }
+                value: searchValue,
+            },
         });
 
         expect(updateFilteredObject).toHaveBeenCalled();
@@ -144,4 +137,4 @@ describe('Search', () => {
         expect(updateError).toHaveBeenCalled();
         expect(error).toBe(true);
     });
-})
+});

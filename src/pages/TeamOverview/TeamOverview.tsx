@@ -87,7 +87,7 @@ const TeamOverview = (): JSX.Element => {
                 originalObject={allTeamMembers}
                 updateFilteredObject={setFilteredTeamMembers}
                 placeholder='Search by name'
-                searchProp='displayName'
+                searchProps={['firstName', 'lastName', 'displayName']}
                 notifyError={setSearchError}
             />
             {searchError && <SearchError>{noMembersMessage}</SearchError>}

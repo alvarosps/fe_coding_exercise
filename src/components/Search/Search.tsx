@@ -5,12 +5,12 @@ interface SearchProps<ObjectType> {
     originalObject: ObjectType[];
     updateFilteredObject: (updatedObject: ObjectType[]) => void;
     notifyError: (hasError: boolean) => void;
-    searchProp: string;
+    searchProps: string[];
     placeholder: string;
 }
 
 const Search = <ObjectType extends TeamsType | UserDataType>(props: SearchProps<ObjectType>): JSX.Element => {
-    const {originalObject, updateFilteredObject, notifyError, searchProp, placeholder} = props;
+    const {originalObject, updateFilteredObject, notifyError, searchProps, placeholder} = props;
 
     const [searchValue, setValue] = React.useState<string>('');
 
@@ -18,7 +18,15 @@ const Search = <ObjectType extends TeamsType | UserDataType>(props: SearchProps<
 
     React.useEffect(() => {
         if (searchValue !== '') {
-            const filteredObject = originalObject.filter((obj) => obj[searchProp].toLowerCase().includes(searchValue));
+            const filteredObject = originalObject.filter((obj) => {
+                let includes = false;
+                searchProps.forEach((prop) => {
+                    if (obj[prop] && obj[prop].toLowerCase().includes(searchValue)) {
+                        includes = true;
+                    }
+                });
+                return includes;
+            });
             if (filteredObject.length === 0) {
                 notifyError(true);
                 updateFilteredObject([]);
@@ -29,7 +37,7 @@ const Search = <ObjectType extends TeamsType | UserDataType>(props: SearchProps<
         } else {
             updateFilteredObject(originalObject);
         }
-    }, [searchValue, notifyError, originalObject, searchProp, updateFilteredObject]);
+    }, [searchValue, notifyError, originalObject, searchProps, updateFilteredObject]);
 
     return (
         <input type='text' value={searchValue} onChange={handleChange} placeholder={placeholder}/>
