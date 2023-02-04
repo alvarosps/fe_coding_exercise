@@ -52,7 +52,7 @@ const Teams = (): JSX.Element => {
     return (
         <Container>
             <Header title="Teams" showBackButton={false} />
-            <Search object={teams} updateObject={setFilteredTeams} notifyError={setSearchError} placeholder='Search by team name' searchProp='name' />
+            <Search originalObject={teams} updateFilteredObject={setFilteredTeams} notifyError={setSearchError} placeholder='Search by team name' searchProp='name' />
             {!searchError && <List data-testid='teams-list' items={getTeamsList(filteredTeams)} isLoading={isLoading} />}
             {searchError && <div>{noTeamsMessage}</div>}
         </Container>
