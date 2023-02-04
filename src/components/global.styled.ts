@@ -9,3 +9,9 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: column;
 `;
+
+export const SearchError = styled.div`
+    color: red;
+    font-weight: bold;
+    font-size: 16px;
+`;
