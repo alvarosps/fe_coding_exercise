@@ -8,10 +8,11 @@ interface ListProps {
     items: ListItemType[];
     hasNavigation?: boolean;
     isLoading: boolean;
+    isUser?: boolean;
 }
 
 const List = (props: ListProps): JSX.Element => {
-    const {items, hasNavigation = true, isLoading} = props;
+    const {items, hasNavigation = true, isLoading, isUser = false} = props;
 
     return (
         <ListContainer>
@@ -25,6 +26,7 @@ const List = (props: ListProps): JSX.Element => {
                             navigationProps={navigationProps}
                             hasNavigation={hasNavigation}
                             url={url}
+                            isUser={isUser}
                         />
                     )
                 )}

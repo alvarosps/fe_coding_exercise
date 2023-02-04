@@ -11,7 +11,7 @@ const getTeamsList = (teams: TeamsType[]): ListItemType[] => {
         const {id, name} = team;
         const columns = [
             {
-                key: 'Name',
+                key: 'name',
                 value: name,
             },
         ];

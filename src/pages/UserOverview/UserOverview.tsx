@@ -9,7 +9,7 @@ import Header from '../../components/Header/Header';
 const getUserCard = (user: UserDataType): JSX.Element => {
     const columns = getUserColumns(user);
 
-    return <Card id={user.id} columns={columns} hasNavigation={false} navigationProps={user} />;
+    return <Card id={user.id} columns={columns} hasNavigation={false} navigationProps={user} isUser />;
 };
 
 const UserOverview = (): JSX.Element => {

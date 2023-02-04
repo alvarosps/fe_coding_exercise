@@ -27,13 +27,23 @@ const getTeamLeadCard = (teamLead: UserDataType): JSX.Element => {
 
     const columns = [
         {
-            key: 'Team Lead',
+            key: 'teamLead',
             value: '',
         },
         ...getUserColumns(teamLead),
     ];
 
-    return <Card id={id} data-testid='team-lead' columns={columns} url={`/user/${id}`} navigationProps={teamLead} />;
+    return (
+        <Card
+            id={id}
+            data-testid='team-lead'
+            columns={columns}
+            url={`/user/${id}`}
+            navigationProps={teamLead}
+            isUser
+            isLeader
+        />
+    );
 };
 
 const TeamOverview = (): JSX.Element => {
@@ -98,6 +108,7 @@ const TeamOverview = (): JSX.Element => {
                         data-testid="team-overview"
                         isLoading={isLoading}
                         items={getUsersCards(filteredTeamMembers.filter(member => member.id !== leadId) ?? [])}
+                        isUser
                     />
                 </React.Fragment>
             )}
