@@ -4,7 +4,7 @@ import Search from 'components/Search/Search';
 import {getTeams} from '../../services/api';
 import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
-import {Container} from '../../components/global.styled';
+import {Container, SearchError} from '../../components/global.styled';
 
 const getTeamsList = (teams: TeamsType[]): ListItemType[] => {
     return teams.map(team => {
@@ -52,9 +52,21 @@ const Teams = (): JSX.Element => {
     return (
         <Container>
             <Header title="Teams" showBackButton={false} />
-            <Search originalObject={teams} updateFilteredObject={setFilteredTeams} notifyError={setSearchError} placeholder='Search by team name' searchProp='name' />
-            {!searchError && <List data-testid='teams-list' items={getTeamsList(filteredTeams)} isLoading={isLoading} />}
-            {searchError && <div>{noTeamsMessage}</div>}
+            <Search
+                originalObject={teams}
+                updateFilteredObject={setFilteredTeams}
+                notifyError={setSearchError}
+                placeholder='Search by team name'
+                searchProp='name'
+            />
+            {!searchError && (
+                <List
+                    data-testid='teams-list'
+                    items={getTeamsList(filteredTeams)}
+                    isLoading={isLoading}
+                />
+            )}
+            {searchError && <SearchError>{noTeamsMessage}</SearchError>}
         </Container>
     );
 };
