@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {render, screen, waitFor} from '@testing-library/react';
+import {TeamOverviewType, UserDataType} from 'types/types';
 import * as API from '../../../services/api';
 import TeamOverview from '../TeamOverview';
-import { TeamOverviewType, UserDataType } from 'types/types';
 
 jest.mock('react-router-dom', () => ({
     useLocation: () => ({
@@ -28,7 +28,7 @@ const getUserData = (id) => {
     };
 
     return userData;
-}
+};
 
 describe('TeamOverview', () => {
     beforeAll(() => {
@@ -54,7 +54,7 @@ describe('TeamOverview', () => {
             getUserData('3'),
             getUserData('4'),
             getUserData('5'),
-        ]
+        ];
         jest.spyOn(API, 'getTeamOverview').mockImplementationOnce(() => Promise.resolve(teamOverview));
         jest.spyOn(API, 'getUserData')
             .mockImplementationOnce(() => Promise.resolve(teamLeadData))

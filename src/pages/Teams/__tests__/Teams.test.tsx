@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {fireEvent, render, screen, waitFor, act, renderHook} from '@testing-library/react';
+import {render, screen, waitFor} from '@testing-library/react';
 import * as API from '../../../services/api';
 import Teams from '../Teams';
 
@@ -36,14 +36,14 @@ describe('Teams', () => {
             },
         ]);
 
-        const { container } = render(<Teams />);
+        render(<Teams />);
         
         expect(screen.getByTestId('spinner')).toBeInTheDocument();
 
         await waitFor(() => {
             expect(screen.getByText('Team1')).toBeInTheDocument();
-            expect(container.querySelector("[data-testid='spinner']")).toBe(null);
         });
+        expect(screen.queryByTestId('spinner')).toBeNull();
     });
 
     it('should render teams list', async () => {
@@ -62,7 +62,7 @@ describe('Teams', () => {
 
         await waitFor(() => {
             expect(screen.getByText('Team1')).toBeInTheDocument();
-            expect(screen.getByText('Team2')).toBeInTheDocument();
         });
+        expect(screen.getByText('Team2')).toBeInTheDocument();
     });
 });
