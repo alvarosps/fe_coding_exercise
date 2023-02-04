@@ -13,9 +13,9 @@ interface SearchProps<ObjectType> {
 const Search = <ObjectType extends TeamsType | UserDataType>(props: SearchProps<ObjectType>): JSX.Element => {
     const {originalObject, updateFilteredObject, notifyError, searchProps, placeholder} = props;
 
-    const [searchValue, setValue] = React.useState<string>('');
+    const [searchValue, setSearchValue] = React.useState<string>('');
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setValue(event.target.value);
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setSearchValue(event.target.value);
 
     React.useEffect(() => {
         if (searchValue !== '') {
@@ -38,7 +38,8 @@ const Search = <ObjectType extends TeamsType | UserDataType>(props: SearchProps<
         } else {
             updateFilteredObject(originalObject);
         }
-    }, [searchValue, notifyError, originalObject, searchProps, updateFilteredObject]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [searchValue, notifyError]);
 
     return (
         <SearchInput type='text' value={searchValue} onChange={handleChange} placeholder={placeholder}/>
