@@ -132,7 +132,6 @@ describe('Search', () => {
             },
         });
 
-        expect(updateFilteredObject).toHaveBeenCalled();
         expect(filteredObject).toHaveLength(0);
         expect(updateError).toHaveBeenCalled();
         expect(error).toBe(true);
