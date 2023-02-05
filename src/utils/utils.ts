@@ -1,20 +1,24 @@
 import {ListItemColumnType, UserDataType} from 'types/types';
 
 export const getUserColumns = (user: UserDataType): ListItemColumnType[] => {
-    const {firstName, lastName, displayName, location} = user;
+    const {firstName, lastName, displayName, location, avatarUrl} = user;
 
     return [
         {
-            key: 'Name',
+            key: 'name',
             value: `${firstName} ${lastName}`,
         },
         {
-            key: 'Display Name',
+            key: 'displayName',
             value: displayName,
         },
         {
-            key: 'Location',
+            key: 'location',
             value: location,
+        },
+        {
+            key: 'avatarUrl',
+            value: avatarUrl,
         },
     ];
 };

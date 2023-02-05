@@ -17,14 +17,14 @@ jest.mock('react-router-dom', () => ({
     }),
 }));
 
-const getUserData = (id) => {
+const getUserData = (id: string) => {
     const userData: UserDataType = {
         id,
         firstName: 'userData',
         lastName: 'userData',
         displayName: 'userData',
         location: '',
-        avatar: '',
+        avatarUrl: '',
     };
 
     return userData;
@@ -63,9 +63,8 @@ describe('TeamOverview', () => {
             .mockImplementationOnce(() => Promise.resolve(teamMembersData[2]));
 
         render(<TeamOverview />);
-        
         await waitFor(() => {
-            expect(screen.queryAllByText('userData')).toHaveLength(4);
+            expect(screen.queryAllByText('Display Name: userData')).toHaveLength(4);
         });
     });
 });

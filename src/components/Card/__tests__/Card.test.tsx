@@ -11,39 +11,29 @@ jest.mock('react-router-dom', () => ({
 }));
 
 describe('Card', () => {
-    it('should render card with single column', () => {
+    it('should render card with team data', () => {
         const id = 'test-id';
-        const columns = [{key: 'columnKey', value: 'columnValue'}];
+        const columns = [{key: 'name', value: 'columnValue'}];
         render(<Card id={id} columns={columns} />);
 
-        expect(screen.queryAllByTestId('card-column')).toHaveLength(columns.length);
 
-        expect(screen.getByText('columnKey')).toBeInTheDocument();
-        expect(screen.getByText('columnValue')).toBeInTheDocument();
+        expect(screen.getByTestId('card-name-test-id')).toBeInTheDocument();
     });
 
-    it('should render card with multiple columns', () => {
+    it('should render card with user data', () => {
         const id = 'test-id';
         var columns = [
-            {key: 'columnKey1', value: 'columnValue1'},
-            {key: 'columnKey2', value: 'columnValue2'},
-            {key: 'columnKey3', value: 'columnValue3'},
-            {key: 'columnKey4', value: ''},
+            {key: 'name', value: 'columnValue1'},
+            {key: 'displayName', value: 'columnValue2'},
+            {key: 'location', value: 'columnValue3'},
+            {key: 'avatarUrl', value: ''},
         ];
-        render(<Card id={id} columns={columns} />);
+        render(<Card id={id} columns={columns} isUser />);
 
-        expect(screen.queryAllByTestId('card-column')).toHaveLength(columns.length);
-
-        expect(screen.getByText('columnKey1')).toBeInTheDocument();
-        expect(screen.getByText('columnValue1')).toBeInTheDocument();
-
-        expect(screen.getByText('columnKey2')).toBeInTheDocument();
-        expect(screen.getByText('columnValue2')).toBeInTheDocument();
-
-        expect(screen.getByText('columnKey3')).toBeInTheDocument();
-        expect(screen.getByText('columnValue3')).toBeInTheDocument();
-        
-        expect(screen.getByText('columnKey4')).toBeInTheDocument();
+        expect(screen.getByTestId('card-name-test-id')).toBeInTheDocument();
+        expect(screen.getByTestId('card-display-name')).toBeInTheDocument();
+        expect(screen.getByTestId('card-location')).toBeInTheDocument();
+        expect(screen.getByTestId('card-avatar')).toBeInTheDocument();
     });
 
     it('should navigate when card is clicked and navigation is enabled', () => {
@@ -55,13 +45,13 @@ describe('Card', () => {
         render(
             <Card
                 id={navProps.id}
-                columns={[{key: 'columnKey', value: 'columnValue'}]}
+                columns={[{key: 'name', value: 'columnValue'}]}
                 url="path"
                 navigationProps={navProps}
             />
         );
 
-        fireEvent.click(screen.getByText('columnKey'));
+        fireEvent.click(screen.getByText('columnValue'));
 
         expect(mockUseNavigate).toHaveBeenCalledWith('path', {state: navProps});
     });
@@ -69,9 +59,9 @@ describe('Card', () => {
     it('should not navigate when card is clicked and navigation is disabled', () => {
         const id = 'test-id';
 
-        render(<Card id={id} columns={[{key: 'columnKey', value: 'columnValue'}]} hasNavigation={false} />);
+        render(<Card id={id} columns={[{key: 'name', value: 'columnValue'}]} hasNavigation={false} />);
 
-        fireEvent.click(screen.getByText('columnKey'));
+        fireEvent.click(screen.getByText('columnValue'));
 
         expect(mockUseNavigate).not.toHaveBeenCalled();
     });

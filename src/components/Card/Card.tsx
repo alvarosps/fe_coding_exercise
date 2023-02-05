@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useNavigate} from 'react-router-dom';
 import {ListItemColumnType, TeamsType, UserDataType} from 'types/types';
-import {CardContainer} from './Card.styled';
+import {CardBody, CardBodyContent, CardContainer, CardAvatar, CardLeader, CardText, CardTitle} from './Card.styled';
 
 interface CardProps {
     id: string;
@@ -9,6 +9,8 @@ interface CardProps {
     columns: ListItemColumnType[];
     hasNavigation?: boolean;
     navigationProps?: UserDataType | TeamsType;
+    isUser?: boolean;
+    isLeader?: boolean;
 }
 
 const Card = (props: CardProps): JSX.Element => {
@@ -18,6 +20,8 @@ const Card = (props: CardProps): JSX.Element => {
         url =  '',
         hasNavigation = true,
         navigationProps = null,
+        isUser = false,
+        isLeader = false,
     } = props;
 
     const navigate = useNavigate();
@@ -32,19 +36,40 @@ const Card = (props: CardProps): JSX.Element => {
         }
     };
 
+    const name = columns.find(col => col.key === 'name')?.value;
+    const displayName = columns.find(col => col.key === 'displayName')?.value;
+    const userLocation = columns.find(col => col.key === 'location')?.value;
+    const avatarUrl = columns.find(col => col.key === 'avatarUrl')?.value;
+
     return (
         <CardContainer
-            data-testid={`cardContainer-${id}`}
+            data-testid='cardContainer'
             hasNavigation={hasNavigation}
             onClick={handleOnClick}
+            isUser={isUser}
+            isLeader={isLeader}
         >
-            {
-                columns.map(({key: columnKey, value}, index) => (
-                    <p data-testid='card-column' key={`${columnKey}-${index}`}>
-                        <strong>{columnKey}</strong>&nbsp;{value}
-                    </p>
-                ))
-            }
+            {isLeader && <CardLeader data-testid='card-leader'>Team Leader</CardLeader>}
+            <CardAvatar showAvatar={isUser} data-testid='card-avatar'>
+                <img src={avatarUrl} alt='avatar' />
+            </CardAvatar>
+            <CardBody>
+                <CardBodyContent>
+                    <CardTitle data-testid={`card-name-${id}`}>
+                        {name}
+                    </CardTitle>
+                    {isUser && (
+                        <React.Fragment>
+                            <CardText data-testid='card-display-name'>
+                                Display Name: {displayName}
+                            </CardText>
+                            <CardText data-testid='card-location'>
+                                Location: {userLocation}
+                            </CardText>
+                        </React.Fragment>
+                    )}
+                </CardBodyContent>
+            </CardBody>
         </CardContainer>
     );
 };

@@ -4,14 +4,14 @@ import Search from 'components/Search/Search';
 import {getTeams} from '../../services/api';
 import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
-import {Container, SearchError} from '../../components/global.styled';
+import {Container, OverviewContainer, SearchError} from '../../components/global.styled';
 
 const getTeamsList = (teams: TeamsType[]): ListItemType[] => {
     return teams.map(team => {
         const {id, name} = team;
         const columns = [
             {
-                key: 'Name',
+                key: 'name',
                 value: name,
             },
         ];
@@ -49,24 +49,33 @@ const Teams = (): JSX.Element => {
         }
     }, [filteredTeams, teams]);
 
+    const searchStyleForTeams = {
+        width: '25%',
+    };
+
     return (
         <Container>
             <Header title="Teams" showBackButton={false} />
-            <Search
-                originalObject={teams}
-                updateFilteredObject={setFilteredTeams}
-                notifyError={setSearchError}
-                placeholder='Search by team name'
-                searchProps={['name']}
-            />
-            {!searchError && (
-                <List
-                    data-testid='teams-list'
-                    items={getTeamsList(filteredTeams)}
-                    isLoading={isLoading}
+            <OverviewContainer>
+                <Search
+                    originalObject={teams}
+                    updateFilteredObject={setFilteredTeams}
+                    notifyError={setSearchError}
+                    placeholder='Search by team name'
+                    searchProps={['name']}
+                    style={searchStyleForTeams}
+                    fixOnHeader
                 />
-            )}
-            {searchError && <SearchError>{noTeamsMessage}</SearchError>}
+                {!searchError && (
+                    <List
+                        data-testid='teams-list'
+                        items={getTeamsList(filteredTeams)}
+                        isLoading={isLoading}
+                        usePagination
+                    />
+                )}
+                {searchError && <SearchError>{noTeamsMessage}</SearchError>}
+            </OverviewContainer>
         </Container>
     );
 };

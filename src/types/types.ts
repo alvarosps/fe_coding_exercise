@@ -21,7 +21,7 @@ export type UserDataType = {
     lastName: string;
     displayName: string;
     location: string;
-    avatar: string;
+    avatarUrl: string;
 }
 
 export type ListItemColumnType = {
