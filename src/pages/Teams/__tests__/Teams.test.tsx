@@ -37,7 +37,7 @@ describe('Teams', () => {
         ]);
 
         render(<Teams />);
-        
+
         expect(screen.getByTestId('spinner')).toBeInTheDocument();
 
         await waitFor(() => {

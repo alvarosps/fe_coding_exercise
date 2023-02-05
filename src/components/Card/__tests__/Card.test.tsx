@@ -16,7 +16,6 @@ describe('Card', () => {
         const columns = [{key: 'name', value: 'columnValue'}];
         render(<Card id={id} columns={columns} />);
 
-
         expect(screen.getByTestId('card-name-test-id')).toBeInTheDocument();
     });
 
@@ -59,7 +58,9 @@ describe('Card', () => {
     it('should not navigate when card is clicked and navigation is disabled', () => {
         const id = 'test-id';
 
-        render(<Card id={id} columns={[{key: 'name', value: 'columnValue'}]} hasNavigation={false} />);
+        render(
+            <Card id={id} columns={[{key: 'name', value: 'columnValue'}]} hasNavigation={false} />
+        );
 
         fireEvent.click(screen.getByText('columnValue'));
 

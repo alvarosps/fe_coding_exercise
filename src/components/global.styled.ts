@@ -41,7 +41,7 @@ export const OverviewHeader = styled.header`
     left: 0;
     width: 100%;
     height: 50px;
-    background-color: #DCDCDC;
+    background-color: #dcdcdc;
     display: flex;
     align-items: center;
     justify-content: space-around;

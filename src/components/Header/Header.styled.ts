@@ -38,4 +38,3 @@ export const HeaderBackButton = styled.button`
     position: fixed;
     left: 0;
 `;
-

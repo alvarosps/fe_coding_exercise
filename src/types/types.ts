@@ -7,13 +7,13 @@ export interface Location<T> extends Path {
 export type TeamsType = {
     id: string;
     name: string;
-}
+};
 
 export type TeamOverviewType = {
     id: string;
     teamLeadId: string;
     teamMemberIds: string[];
-}
+};
 
 export type UserDataType = {
     id: string;
@@ -22,16 +22,16 @@ export type UserDataType = {
     displayName: string;
     location: string;
     avatarUrl: string;
-}
+};
 
 export type ListItemColumnType = {
     key: string;
     value: string;
-}
+};
 
 export type ListItemType = {
     id: string;
     url?: string;
     columns: Array<ListItemColumnType>;
     navigationProps?: UserDataType | TeamsType;
-}
+};

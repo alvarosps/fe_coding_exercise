@@ -2,7 +2,13 @@ import * as React from 'react';
 import {ListItemType} from 'types/types';
 import Card from '../Card/Card';
 import {Spinner} from '../Spinner/Spinner';
-import {ItemsPerPage, ListContainer, PageNumber, PageSelect, PaginationContainer} from './List.styled';
+import {
+    ItemsPerPage,
+    ListContainer,
+    PageNumber,
+    PageSelect,
+    PaginationContainer,
+} from './List.styled';
 
 interface ListProps {
     items: ListItemType[];
@@ -26,7 +32,7 @@ const List = (props: ListProps): JSX.Element => {
     const [currentPage, setCurrentPage] = React.useState(1);
     const [itemsPerPageState, setItemsPerPageState] = React.useState(itemsPerPage);
     const totalPages = Math.ceil(items.length / itemsPerPageState);
-    const startIndex = (currentPage - 1)*itemsPerPageState;
+    const startIndex = (currentPage - 1) * itemsPerPageState;
     const endIndex = startIndex + itemsPerPageState;
 
     const possibleAvailableItems = Array.from({length: 9}, (_, i) => i * 5);
@@ -48,17 +54,16 @@ const List = (props: ListProps): JSX.Element => {
                 {isLoading && <Spinner />}
                 {!isLoading &&
                     itemsToMap.map(({url, id, columns, navigationProps}, index) => (
-                            <Card
-                                key={`${id}-${index}`}
-                                id={id}
-                                columns={columns}
-                                navigationProps={navigationProps}
-                                hasNavigation={hasNavigation}
-                                url={url}
-                                isUser={isUser}
-                            />
-                        )
-                    )}
+                        <Card
+                            key={`${id}-${index}`}
+                            id={id}
+                            columns={columns}
+                            navigationProps={navigationProps}
+                            hasNavigation={hasNavigation}
+                            url={url}
+                            isUser={isUser}
+                        />
+                    ))}
             </ListContainer>
             {!isLoading && usePagination && (
                 <React.Fragment>
@@ -76,12 +81,14 @@ const List = (props: ListProps): JSX.Element => {
                     <ItemsPerPage>
                         Items per page:
                         <PageSelect
-                            data-testid='list-select'
+                            data-testid="list-select"
                             value={itemsPerPageState}
                             onChange={handleItemsPerPageChange}
                         >
                             {possibleAvailableItems.map((item, index) => (
-                                <option key={`option-${index}`} value={item}>{item}</option>
+                                <option key={`option-${index}`} value={item}>
+                                    {item}
+                                </option>
                             ))}
                         </PageSelect>
                     </ItemsPerPage>

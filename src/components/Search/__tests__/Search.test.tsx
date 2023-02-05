@@ -28,7 +28,7 @@ describe('Search', () => {
                 originalObject={teamsMock}
                 updateFilteredObject={updateFilteredObject}
                 notifyError={updateError}
-                placeholder='Search'
+                placeholder="Search"
                 searchProps={['name']}
             />
         );
@@ -78,7 +78,7 @@ describe('Search', () => {
                 originalObject={usersMock}
                 updateFilteredObject={updateFilteredObject}
                 notifyError={updateError}
-                placeholder='Search'
+                placeholder="Search"
                 searchProps={['firstName', 'lastName', 'displayName']}
             />
         );
@@ -119,7 +119,7 @@ describe('Search', () => {
                 originalObject={teamsMock}
                 updateFilteredObject={updateFilteredObject}
                 notifyError={updateError}
-                placeholder='Search'
+                placeholder="Search"
                 searchProps={['name']}
             />
         );

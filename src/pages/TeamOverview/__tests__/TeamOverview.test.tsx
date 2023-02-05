@@ -50,12 +50,10 @@ describe('TeamOverview', () => {
             teamMemberIds: ['3', '4', '5'],
         };
         const teamLeadData = getUserData('2');
-        const teamMembersData = [
-            getUserData('3'),
-            getUserData('4'),
-            getUserData('5'),
-        ];
-        jest.spyOn(API, 'getTeamOverview').mockImplementationOnce(() => Promise.resolve(teamOverview));
+        const teamMembersData = [getUserData('3'), getUserData('4'), getUserData('5')];
+        jest.spyOn(API, 'getTeamOverview').mockImplementationOnce(() =>
+            Promise.resolve(teamOverview)
+        );
         jest.spyOn(API, 'getUserData')
             .mockImplementationOnce(() => Promise.resolve(teamLeadData))
             .mockImplementationOnce(() => Promise.resolve(teamMembersData[0]))

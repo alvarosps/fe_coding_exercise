@@ -19,7 +19,7 @@ const App = (): JSX.Element => {
             element: <UserOverview />,
         },
     ]);
-    
+
     return <RouterProvider router={router} />;
 };
 

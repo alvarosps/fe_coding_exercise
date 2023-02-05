@@ -5,14 +5,20 @@ import {getUserColumns} from 'utils/utils';
 import Search from 'components/Search/Search';
 import {getTeamOverview, getUserData} from '../../services/api';
 import Card from '../../components/Card/Card';
-import {Container, OverviewContainer, OverviewHeader, OverviewTitle, SearchError} from '../../components/global.styled';
+import {
+    Container,
+    OverviewContainer,
+    OverviewHeader,
+    OverviewTitle,
+    SearchError,
+} from '../../components/global.styled';
 import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
 
 const getUsersCards = (users: UserDataType[]): ListItemType[] => {
-    return users.map((user) => {
+    return users.map(user => {
         const columns = getUserColumns(user);
-        
+
         return {
             id: user.id,
             url: `/user/${user.id}`,
@@ -36,7 +42,7 @@ const getTeamLeadCard = (teamLead: UserDataType): JSX.Element => {
     return (
         <Card
             id={id}
-            data-testid='team-lead'
+            data-testid="team-lead"
             columns={columns}
             url={`/user/${id}`}
             navigationProps={teamLead}
@@ -65,11 +71,11 @@ const TeamOverview = (): JSX.Element => {
             setLeadId(teamLeadId);
 
             const teamMembers = [];
-            for(const teamMemberId of teamMemberIds) {
+            for (const teamMemberId of teamMemberIds) {
                 const data = await getUserData(teamMemberId);
                 teamMembers.push(data);
             }
-            
+
             setFilteredTeamMembers([teamLead, ...teamMembers]);
             setAllTeamMembers([teamLead, ...teamMembers]);
             setIsLoading(false);
@@ -93,13 +99,13 @@ const TeamOverview = (): JSX.Element => {
 
     return (
         <Container>
-            <Header title='Team'  />
+            <Header title="Team" />
             <OverviewHeader>
                 <OverviewTitle>{location.state.name}</OverviewTitle>
                 <Search
                     originalObject={allTeamMembers}
                     updateFilteredObject={setFilteredTeamMembers}
-                    placeholder='Search by name'
+                    placeholder="Search by name"
                     searchProps={['firstName', 'lastName']}
                     notifyError={setSearchError}
                 />
@@ -112,7 +118,9 @@ const TeamOverview = (): JSX.Element => {
                         <List
                             data-testid="team-overview"
                             isLoading={isLoading}
-                            items={getUsersCards(filteredTeamMembers.filter(member => member.id !== leadId) ?? [])}
+                            items={getUsersCards(
+                                filteredTeamMembers.filter(member => member.id !== leadId) ?? []
+                            )}
                             isUser
                         />
                     </React.Fragment>

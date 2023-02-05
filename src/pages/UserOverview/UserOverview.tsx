@@ -9,7 +9,9 @@ import Header from '../../components/Header/Header';
 const getUserCard = (user: UserDataType): JSX.Element => {
     const columns = getUserColumns(user);
 
-    return <Card id={user.id} columns={columns} hasNavigation={false} navigationProps={user} isUser />;
+    return (
+        <Card id={user.id} columns={columns} hasNavigation={false} navigationProps={user} isUser />
+    );
 };
 
 const UserOverview = (): JSX.Element => {
@@ -17,7 +19,7 @@ const UserOverview = (): JSX.Element => {
 
     return (
         <Container>
-            <Header title='User' />
+            <Header title="User" />
             <OverviewHeader style={{height: '0'}} />
             {getUserCard(location.state)}
         </Container>

@@ -39,7 +39,7 @@ const Teams = (): JSX.Element => {
             setFilteredTeams(response);
             setIsLoading(false);
         };
-        
+
         fetchTeams();
     }, []);
 
@@ -61,14 +61,14 @@ const Teams = (): JSX.Element => {
                     originalObject={teams}
                     updateFilteredObject={setFilteredTeams}
                     notifyError={setSearchError}
-                    placeholder='Search by team name'
+                    placeholder="Search by team name"
                     searchProps={['name']}
                     style={searchStyleForTeams}
                     fixOnHeader
                 />
                 {!searchError && (
                     <List
-                        data-testid='teams-list'
+                        data-testid="teams-list"
                         items={getTeamsList(filteredTeams)}
                         isLoading={isLoading}
                         usePagination

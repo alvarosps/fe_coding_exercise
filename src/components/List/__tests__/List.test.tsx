@@ -23,7 +23,6 @@ const generateItem = (index: number) => {
 const testPaginationItems: ListItemType[] = Array.from({length: 100}, (_, i) => generateItem(i));
 
 describe('List', () => {
-
     it('should render spinner and not render items when it is loading', () => {
         const items = [
             {

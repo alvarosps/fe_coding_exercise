@@ -1,7 +1,15 @@
 import * as React from 'react';
 import {useNavigate} from 'react-router-dom';
 import {ListItemColumnType, TeamsType, UserDataType} from 'types/types';
-import {CardBody, CardBodyContent, CardContainer, CardAvatar, CardLeader, CardText, CardTitle} from './Card.styled';
+import {
+    CardBody,
+    CardBodyContent,
+    CardContainer,
+    CardAvatar,
+    CardLeader,
+    CardText,
+    CardTitle,
+} from './Card.styled';
 
 interface CardProps {
     id: string;
@@ -17,7 +25,7 @@ const Card = (props: CardProps): JSX.Element => {
     const {
         id,
         columns,
-        url =  '',
+        url = '',
         hasNavigation = true,
         navigationProps = null,
         isUser = false,
@@ -43,27 +51,25 @@ const Card = (props: CardProps): JSX.Element => {
 
     return (
         <CardContainer
-            data-testid='cardContainer'
+            data-testid="cardContainer"
             hasNavigation={hasNavigation}
             onClick={handleOnClick}
             isUser={isUser}
             isLeader={isLeader}
         >
-            {isLeader && <CardLeader data-testid='card-leader'>Team Leader</CardLeader>}
-            <CardAvatar showAvatar={isUser} data-testid='card-avatar'>
-                <img src={avatarUrl} alt='avatar' />
+            {isLeader && <CardLeader data-testid="card-leader">Team Leader</CardLeader>}
+            <CardAvatar showAvatar={isUser} data-testid="card-avatar">
+                <img src={avatarUrl} alt="avatar" />
             </CardAvatar>
             <CardBody>
                 <CardBodyContent>
-                    <CardTitle data-testid={`card-name-${id}`}>
-                        {name}
-                    </CardTitle>
+                    <CardTitle data-testid={`card-name-${id}`}>{name}</CardTitle>
                     {isUser && (
                         <React.Fragment>
-                            <CardText data-testid='card-display-name'>
+                            <CardText data-testid="card-display-name">
                                 Display Name: {displayName}
                             </CardText>
-                            <CardText data-testid='card-location'>
+                            <CardText data-testid="card-location">
                                 Location: {userLocation}
                             </CardText>
                         </React.Fragment>

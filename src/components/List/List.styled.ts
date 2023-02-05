@@ -3,7 +3,9 @@ import styled from 'styled-components';
 export const ListContainer = styled.div<{isUser: boolean}>`
     display: grid;
 
-    ${({isUser}) => isUser && `
+    ${({isUser}) =>
+        isUser &&
+        `
         grid-template-columns: repeat(4, minmax(0, 1fr));
         grid-template-rows: auto;
 
@@ -20,7 +22,9 @@ export const ListContainer = styled.div<{isUser: boolean}>`
         }
     `}
 
-    ${({isUser}) => !isUser && `
+    ${({isUser}) =>
+        !isUser &&
+        `
         grid-template-columns: repeat(5, minmax(0, 1fr));
         grid-template-rows: auto;
 
@@ -39,33 +43,33 @@ export const ListContainer = styled.div<{isUser: boolean}>`
 `;
 
 export const PaginationContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 `;
 
 export const PageNumber = styled.button<{active: boolean}>`
-  padding: 10px 20px;
-  background-color: ${(props) => (props.active ? '#add8e6' : '#ffffff')};
-  border-radius: 20px;
-  margin: 0 10px;
-  cursor: pointer;
+    padding: 10px 20px;
+    background-color: ${props => (props.active ? '#add8e6' : '#ffffff')};
+    border-radius: 20px;
+    margin: 0 10px;
+    cursor: pointer;
 
-  &:hover {
-    background-color: #87ceeb;
-  }
+    &:hover {
+        background-color: #87ceeb;
+    }
 `;
 
 export const ItemsPerPage = styled.footer`
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 export const PageSelect = styled.select`
-  padding: 10px;
-  margin-left: 10px;
-  border-radius: 4px;
-  border: 1px solid #000;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 4px;
+    border: 1px solid #000;
 `;
