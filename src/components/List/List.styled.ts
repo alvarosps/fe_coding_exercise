@@ -37,3 +37,35 @@ export const ListContainer = styled.div<{isUser: boolean}>`
         }
     `}
 `;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+export const PageNumber = styled.button<{active: boolean}>`
+  padding: 10px 20px;
+  background-color: ${(props) => (props.active ? '#add8e6' : '#ffffff')};
+  border-radius: 20px;
+  margin: 0 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #91c6d8;
+  }
+`;
+
+export const ItemsPerPage = styled.div`
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const PageSelect = styled.select`
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 4px;
+  border: 1px solid #000;
+`;

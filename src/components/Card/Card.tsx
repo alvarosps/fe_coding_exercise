@@ -43,7 +43,7 @@ const Card = (props: CardProps): JSX.Element => {
 
     return (
         <CardContainer
-            data-testid={`cardContainer-${id}`}
+            data-testid='cardContainer'
             hasNavigation={hasNavigation}
             onClick={handleOnClick}
             isUser={isUser}
@@ -55,7 +55,7 @@ const Card = (props: CardProps): JSX.Element => {
             </CardAvatar>
             <CardBody>
                 <CardBodyContent>
-                    <CardTitle data-testid='card-name'>
+                    <CardTitle data-testid={`card-name-${id}`}>
                         {name}
                     </CardTitle>
                     {isUser && (
