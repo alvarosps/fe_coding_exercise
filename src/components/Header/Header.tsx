@@ -23,7 +23,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     return (
         <HeaderContainer>
             {showBackButton && <HeaderBackButton onClick={goToPreviousPage}>
-                <FaArrowLeft size={20} />
+                <FaArrowLeft size={20} color='#87cefa' />
             </HeaderBackButton>}
             <HeaderTitleContainer>
                 {title}

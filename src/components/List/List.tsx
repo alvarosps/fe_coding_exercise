@@ -10,6 +10,7 @@ interface ListProps {
     isLoading: boolean;
     isUser?: boolean;
     itemsPerPage?: number;
+    usePagination?: boolean;
 }
 
 const List = (props: ListProps): JSX.Element => {
@@ -19,6 +20,7 @@ const List = (props: ListProps): JSX.Element => {
         isLoading,
         isUser = false,
         itemsPerPage = 20,
+        usePagination = false,
     } = props;
 
     const [currentPage, setCurrentPage] = React.useState(1);
@@ -38,12 +40,14 @@ const List = (props: ListProps): JSX.Element => {
         setCurrentPage(1);
     };
 
+    const itemsToMap = usePagination ? items.slice(startIndex, endIndex) : items;
+
     return (
         <React.Fragment>
             <ListContainer isUser={isUser}>
                 {isLoading && <Spinner />}
                 {!isLoading &&
-                    items.slice(startIndex, endIndex).map(({url, id, columns, navigationProps}, index) => (
+                    itemsToMap.map(({url, id, columns, navigationProps}, index) => (
                             <Card
                                 key={`${id}-${index}`}
                                 id={id}
@@ -56,32 +60,32 @@ const List = (props: ListProps): JSX.Element => {
                         )
                     )}
             </ListContainer>
-            {!isLoading && (
-                <PaginationContainer>
-                    {Array.from({length: totalPages}, (_, i) => i + 1).map(page => (
-                        <PageNumber
-                            key={page}
-                            active={page === currentPage}
-                            onClick={() => handlePageClick(page)}
-                        >
-                            {page}
-                        </PageNumber>
-                    ))}
-                </PaginationContainer>
-            )}
-            {!isLoading && (
-                <ItemsPerPage>
-                    Items per page:
-                    <PageSelect
-                        data-testid='list-select'
-                        value={itemsPerPageState}
-                        onChange={handleItemsPerPageChange}
-                    >
-                        {possibleAvailableItems.map((item, index) => (
-                            <option key={`option-${index}`} value={item}>{item}</option>
+            {!isLoading && usePagination && (
+                <React.Fragment>
+                    <PaginationContainer>
+                        {Array.from({length: totalPages}, (_, i) => i + 1).map(page => (
+                            <PageNumber
+                                key={page}
+                                active={page === currentPage}
+                                onClick={() => handlePageClick(page)}
+                            >
+                                {page}
+                            </PageNumber>
                         ))}
-                    </PageSelect>
-                </ItemsPerPage>
+                    </PaginationContainer>
+                    <ItemsPerPage>
+                        Items per page:
+                        <PageSelect
+                            data-testid='list-select'
+                            value={itemsPerPageState}
+                            onChange={handleItemsPerPageChange}
+                        >
+                            {possibleAvailableItems.map((item, index) => (
+                                <option key={`option-${index}`} value={item}>{item}</option>
+                            ))}
+                        </PageSelect>
+                    </ItemsPerPage>
+                </React.Fragment>
             )}
         </React.Fragment>
     );

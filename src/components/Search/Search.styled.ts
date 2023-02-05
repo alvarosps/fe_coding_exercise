@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SearchContainer = styled.div`
+export const SearchContainer = styled.div<{fixOnHeader: boolean}>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,6 +10,13 @@ export const SearchContainer = styled.div`
   @media (max-width: 500px) {
     width: 100%;
   }
+
+  ${({fixOnHeader}) => fixOnHeader && `
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    z-index: 999;
+  `}
 `;
 
 export const SearchInput = styled.input`

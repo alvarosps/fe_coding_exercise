@@ -89,7 +89,7 @@ describe('List', () => {
     });
 
     it('renders the correct number of cards', () => {
-        render(<List items={testPaginationItems} isLoading={false} />);
+        render(<List items={testPaginationItems} isLoading={false} usePagination />);
 
         expect(screen.getByText('test-0')).toBeInTheDocument();
         expect(screen.getByText('test-19')).toBeInTheDocument();
@@ -97,14 +97,14 @@ describe('List', () => {
     });
 
     it('renders the correct cards based on current page', () => {
-        render(<List items={testPaginationItems} isLoading={false} />);
+        render(<List items={testPaginationItems} isLoading={false} usePagination />);
         expect(screen.queryByTestId('card-name-25')).not.toBeInTheDocument();
         fireEvent.click(screen.getByText('2'));
         expect(screen.getByTestId('card-name-25')).toBeInTheDocument();
     });
 
     it('changes the number of items per page', () => {
-        render(<List items={testPaginationItems} isLoading={false} />);
+        render(<List items={testPaginationItems} isLoading={false} usePagination />);
 
         expect(screen.queryAllByTestId('cardContainer')).toHaveLength(20);
 

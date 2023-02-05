@@ -5,7 +5,7 @@ import {getUserColumns} from 'utils/utils';
 import Search from 'components/Search/Search';
 import {getTeamOverview, getUserData} from '../../services/api';
 import Card from '../../components/Card/Card';
-import {Container, OverviewHeader, OverviewTitle, SearchError} from '../../components/global.styled';
+import {Container, OverviewContainer, OverviewHeader, OverviewTitle, SearchError} from '../../components/global.styled';
 import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
 
@@ -104,18 +104,20 @@ const TeamOverview = (): JSX.Element => {
                     notifyError={setSearchError}
                 />
             </OverviewHeader>
-            {searchError && <SearchError>{noMembersMessage}</SearchError>}
-            {!searchError && (
-                <React.Fragment>
-                    {!isLoading && showTeamLead && getTeamLeadCard(allTeamMembers[0])}
-                    <List
-                        data-testid="team-overview"
-                        isLoading={isLoading}
-                        items={getUsersCards(filteredTeamMembers.filter(member => member.id !== leadId) ?? [])}
-                        isUser
-                    />
-                </React.Fragment>
-            )}
+            <OverviewContainer style={{marginTop: '120px'}}>
+                {searchError && <SearchError>{noMembersMessage}</SearchError>}
+                {!searchError && (
+                    <React.Fragment>
+                        {!isLoading && showTeamLead && getTeamLeadCard(allTeamMembers[0])}
+                        <List
+                            data-testid="team-overview"
+                            isLoading={isLoading}
+                            items={getUsersCards(filteredTeamMembers.filter(member => member.id !== leadId) ?? [])}
+                            isUser
+                        />
+                    </React.Fragment>
+                )}
+            </OverviewContainer>
         </Container>
     );
 };

@@ -52,11 +52,11 @@ export const PageNumber = styled.button<{active: boolean}>`
   cursor: pointer;
 
   &:hover {
-    background-color: #91c6d8;
+    background-color: #87ceeb;
   }
 `;
 
-export const ItemsPerPage = styled.div`
+export const ItemsPerPage = styled.footer`
   margin-top: 10px;
   display: flex;
   align-items: center;

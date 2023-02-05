@@ -9,10 +9,19 @@ interface SearchProps<ObjectType> {
     searchProps: (keyof ObjectType)[];
     placeholder: string;
     style?: object;
+    fixOnHeader?: boolean;
 }
 
 const Search = <ObjectType extends TeamsType | UserDataType>(props: SearchProps<ObjectType>): JSX.Element => {
-    const {originalObject, updateFilteredObject, notifyError, searchProps, placeholder, style = {}} = props;
+    const {
+        originalObject,
+        updateFilteredObject,
+        notifyError,
+        searchProps,
+        placeholder,
+        style,
+        fixOnHeader = false,
+    } = props;
 
     const [searchValue, setSearchValue] = React.useState<string>('');
 
@@ -44,7 +53,7 @@ const Search = <ObjectType extends TeamsType | UserDataType>(props: SearchProps<
     };
 
     return (
-        <SearchContainer style={style}>
+        <SearchContainer fixOnHeader={fixOnHeader} style={style}>
             <SearchInput type='text' value={searchValue} onChange={handleInputChange} placeholder={placeholder}/>
         </SearchContainer>
     );

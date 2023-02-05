@@ -12,6 +12,7 @@ export const CardContainer = styled.div<{hasNavigation: boolean, isUser: boolean
   display: ${props => (props.isUser ? 'grid' : 'flex')};
   justify-content: center;
   align-items: center;
+  color: #36454f;
   
   ${({isUser, isLeader}) => isUser && isLeader && `
     grid-template-columns: 25% 25% 25% 25%;
@@ -29,21 +30,30 @@ export const CardContainer = styled.div<{hasNavigation: boolean, isUser: boolean
 
   ${({hasNavigation}) => hasNavigation && `
     &:hover {
-        background-color: #cce2ff;
+        background-color: #87ceeb;
     }
   `}
 `;
 
 export const CardAvatar = styled.div<{showAvatar: boolean}>`
+  width: 50px;
+  height: 50px;
   background-color: #f2f2f2;
-  margin-left: 5px;
+  margin: 10px;
   padding: 25px;
+  color: #36454f;
+  border-radius: 30px;
+  border: 1px solid #c0c0c0;
+  display: ${props => (props.showAvatar ? 'flex' : 'none')};
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  overflow: hidden;
+
   img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+    object-fit: fill;
   }
-  display: ${props => (props.showAvatar ? 'block' : 'none')};
 `;
 
 export const CardBody = styled.div`
@@ -62,7 +72,8 @@ export const CardLeader = styled.h2`
   margin: 0;
   font-weight: bold;
   grid-area: leader;
-  background-color: #dadada;
+  background-color: #191970;
+  color: #87cefa;
   padding: 10px;
 `;
 
@@ -74,5 +85,5 @@ export const CardTitle = styled.h3`
 export const CardText = styled.p`
   margin: 0;
   font-size: 14px;
-  color: #a0a0a0;
+  color: #C0C0C0;
 `;

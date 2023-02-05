@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
-    background-color: #f5f5f5;
+    background-color: #191970;
     display: flex;
     align-items: center;
     height: 60px;
@@ -13,6 +13,7 @@ export const HeaderContainer = styled.div`
     top: 0;
     left: 0;
     z-index: 10;
+    color: #87cefa;
 `;
 
 export const HeaderTitleContainer = styled.h1`

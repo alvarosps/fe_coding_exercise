@@ -17,7 +17,7 @@ describe('Card', () => {
         render(<Card id={id} columns={columns} />);
 
 
-        expect(screen.getByTestId('card-name')).toBeInTheDocument();
+        expect(screen.getByTestId('card-name-test-id')).toBeInTheDocument();
     });
 
     it('should render card with user data', () => {
@@ -30,7 +30,7 @@ describe('Card', () => {
         ];
         render(<Card id={id} columns={columns} isUser />);
 
-        expect(screen.getByTestId('card-name')).toBeInTheDocument();
+        expect(screen.getByTestId('card-name-test-id')).toBeInTheDocument();
         expect(screen.getByTestId('card-display-name')).toBeInTheDocument();
         expect(screen.getByTestId('card-location')).toBeInTheDocument();
         expect(screen.getByTestId('card-avatar')).toBeInTheDocument();
