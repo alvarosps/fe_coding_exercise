@@ -52,7 +52,9 @@ export const CardAvatar = styled.div<{showAvatar: boolean}>`
   overflow: hidden;
 
   img {
-    object-fit: fill;
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
   }
 `;
 

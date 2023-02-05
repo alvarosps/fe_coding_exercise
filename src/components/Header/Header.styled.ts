@@ -18,6 +18,8 @@ export const HeaderContainer = styled.div`
 
 export const HeaderTitleContainer = styled.h1`
     font-size: 22px;
+    font-family: Verdana;
+    text-transform: uppercase;
 `;
 
 export const HeaderSubtitleContainer = styled.h3`
